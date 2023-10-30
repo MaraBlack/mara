@@ -1,25 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SimpleDemoComponent } from './shared/components/simple-demo/simple-demo.component';
-// import { NgxThreeModule } from '../../../node_modules/ngx-three';
-import { FormsModule } from '@angular/forms';
-import { NgxThreeGeneratedModule } from 'ngx-three';
+import { CanvasComponent } from './shared/components/canvas/canvas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SimpleDemoComponent
+    CanvasComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    NgxThreeGeneratedModule,
-    FormsModule
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
