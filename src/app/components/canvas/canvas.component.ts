@@ -8,6 +8,9 @@ import { getPointLight } from "../../shared/engine/light";
 import { getWorldPlane } from "../../shared/engine/plane";
 import { getGridHelper } from "../../shared/engine/grid-helper";
 import { setControls } from "../../shared/engine/controls";
+import { RoadDataHardcoded } from "src/app/shared/data/roads";
+import { addRoadTile } from "src/app/shared/objects/road-tile";
+
 
 @Component({
   selector: 'app-canvas',
@@ -23,6 +26,7 @@ export class CanvasComponent {
 
   // renderer
   renderer!: THREE.Renderer;
+  raycaster = new THREE.Raycaster();
 
   // scene objects
   camera!: THREE.PerspectiveCamera;
@@ -31,6 +35,9 @@ export class CanvasComponent {
   plane!: THREE.Mesh;
   gridHelper!: THREE.GridHelper;
   controls!: OrbitControls;
+
+  // data
+  roads = RoadDataHardcoded;
 
   constructor() {
     window.addEventListener("resize", this.onWindowResize, false);
@@ -61,7 +68,25 @@ export class CanvasComponent {
     this.controls = setControls(this.camera, this.renderer.domElement)
     this.animate();
 
+    const data = {
+      coordinates: { x: -2.5, z: -2.5 },
+      data: {
+        type: 'platza',
+        name: 'STR 0',
+        nr: '0.1',
+        description: 'Central Platza'
+      }
+    };
+    const color = 0xf1db4b;
+    const eventOptions = {
+      raycaster: this.raycaster,
+      camera: this.camera,
+      scene: this.scene
+    }
 
+    const tile = addRoadTile(data, color, eventOptions)
+
+    this.scene.add(tile);
   }
 
   animate() {

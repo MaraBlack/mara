@@ -1,7 +1,7 @@
 import { RoadObject } from "../models/road.model";
 
 
-export const RoadData: { [key: string]: RoadObject[] | any } = {
+export const RoadDataHardcoded = {
   str0: [
     {
       coordinates: { x: -2.5, z: -2.5 },

@@ -3,7 +3,8 @@ import { RoadObject } from "../models/road.model";
 import { addObjectClickListener, onMouseClickFn } from "../engine/events";
 import { EventOptions } from "../models/event-options.model";
 
-export function addRoadTile(properties: RoadObject, color: THREE.ColorRepresentation = 0xf1db4b, options: EventOptions) {
+// new THREE.Color(), 0xf1db4b
+export function addRoadTile(properties: RoadObject, color: THREE.ColorRepresentation = new THREE.Color(), options: EventOptions) {
   const segments = 5;
 
   const tileColor = new THREE.MeshLambertMaterial({ color: color });
@@ -28,5 +29,7 @@ export function addRoadTile(properties: RoadObject, color: THREE.ColorRepresenta
     }
   }
 
-  addObjectClickListener(tileObj, (objectData: any) => onMouseClickFn(clickInfo), options)
+  addObjectClickListener(tileObj, (objectData: any) => onMouseClickFn(clickInfo), options);
+
+  return tileObj;
 }

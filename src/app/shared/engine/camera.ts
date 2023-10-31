@@ -19,6 +19,9 @@ export const cameraCurve = new THREE.CubicBezierCurve3(
   new THREE.Vector3(30, 25, 30)
 );
 
+/*
+  @return gridHcameraelper
+*/
 export function getCamera() {
   const camera = new THREE.PerspectiveCamera(
     cameraDefaults.fov,

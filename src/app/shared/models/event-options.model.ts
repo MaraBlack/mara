@@ -1,5 +1,5 @@
 export interface EventOptions {
   raycaster: THREE.Raycaster,
-  camera: THREE.Camera,
+  camera: THREE.PerspectiveCamera,
   scene: THREE.Scene
 }

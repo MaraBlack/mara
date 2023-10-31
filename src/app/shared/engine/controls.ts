@@ -1,6 +1,11 @@
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+/*
+  @param camera
+  @param renderer
+  @return controls
+*/
 export function setControls(camera: THREE.Camera, renderer: HTMLElement | undefined) {
   const controls = new OrbitControls(camera, renderer);
   controls.screenSpacePanning = true;

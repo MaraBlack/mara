@@ -1,6 +1,11 @@
 import * as THREE from "three";
 import { EventOptions } from "../models/event-options.model";
 
+/*
+  @param objectToWatch - for uuid
+  @param onMouseClick - function to be executed at click
+  @param options - needed for addEventListener
+*/
 export function addObjectClickListener(objectToWatch: any, onMouseClick: Function, options: EventOptions) {
   const objectToWatchId = objectToWatch.uuid;
   let mouse = new THREE.Vector2();

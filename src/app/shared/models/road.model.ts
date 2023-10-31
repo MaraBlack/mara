@@ -1,4 +1,4 @@
-import { PlaneCoordinates } from "./plane-coordinates.mode";
+import { PlaneCoordinates } from "./plane-coordinates.model";
 
 export interface RoadData {
   type: string,
