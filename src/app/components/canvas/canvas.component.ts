@@ -3,13 +3,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
-import { cameraAnimationTime, cameraCurve, cameraDefaults, enCamAnim, getCamera } from "../../engine/camera";
-import { getPointLight } from "../../engine/light";
-import { getWorldPlane } from "../../engine/plane";
-import { getGridHelper } from "../../engine/grid-helper";
-import { setControls } from "../../engine/controls";
-
-
+import { cameraAnimationTime, cameraCurve, cameraDefaults, enCamAnim, getCamera } from "../../shared/engine/camera";
+import { getPointLight } from "../../shared/engine/light";
+import { getWorldPlane } from "../../shared/engine/plane";
+import { getGridHelper } from "../../shared/engine/grid-helper";
+import { setControls } from "../../shared/engine/controls";
 
 @Component({
   selector: 'app-canvas',
@@ -33,9 +31,6 @@ export class CanvasComponent {
   plane!: THREE.Mesh;
   gridHelper!: THREE.GridHelper;
   controls!: OrbitControls;
-
-
-
 
   constructor() {
     window.addEventListener("resize", this.onWindowResize, false);
@@ -65,6 +60,8 @@ export class CanvasComponent {
 
     this.controls = setControls(this.camera, this.renderer.domElement)
     this.animate();
+
+
   }
 
   animate() {
