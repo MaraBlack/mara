@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 /*
   @param camera
   @param renderer
-  @return controls
+  @return OrbitControls
 */
 export function setControls(camera: THREE.Camera, renderer: HTMLElement | undefined) {
   const controls = new OrbitControls(camera, renderer);

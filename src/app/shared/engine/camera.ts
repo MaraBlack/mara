@@ -20,7 +20,7 @@ export const cameraCurve = new THREE.CubicBezierCurve3(
 );
 
 /*
-  @return gridHcameraelper
+  @return PerspectiveCamera
 */
 export function getCamera() {
   const camera = new THREE.PerspectiveCamera(

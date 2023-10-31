@@ -3,7 +3,7 @@ import * as THREE from "three";
 /*
   @param color - default is white
   @param reflectivity
-  @return plane
+  @return PlaneGeometry
 */
 export function getWorldPlane(color: THREE.ColorRepresentation = new THREE.Color(), reflectivity: number = 0.8) {
   const lambertMaterial = new THREE.MeshLambertMaterial({

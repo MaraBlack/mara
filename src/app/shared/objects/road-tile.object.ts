@@ -10,7 +10,7 @@ import { adjustColor } from "../misc/utils";
   @param color - default is white, preffered is 0xf1db4b
   @param options - raycaster, camera and scene, EventOptions interface
   @param wireframe - use MeshStandardMaterial with wireframe true or false
-  @return tileObj
+  @return tileObject
 */
 export function addRoadTile(properties: RoadObject, color: THREE.Color = new THREE.Color(), options: EventOptions, wireframe: boolean) {
   const segments = 5;
@@ -25,13 +25,13 @@ export function addRoadTile(properties: RoadObject, color: THREE.Color = new THR
   }
 
 
-  const tileObj = new THREE.Mesh(tileBoxGeom, tileColorMesh);
-  tileObj.position.set(properties.coordinates.x, 0, properties.coordinates.z);
-  tileObj.receiveShadow = true;
-  tileObj.name = properties.data.name;
+  const tileObject = new THREE.Mesh(tileBoxGeom, tileColorMesh);
+  tileObject.position.set(properties.coordinates.x, 0, properties.coordinates.z);
+  tileObject.receiveShadow = true;
+  tileObject.name = properties.data.name;
 
   const clickInfo: RoadObject = {
-    uuid: tileObj.uuid,
+    uuid: tileObject.uuid,
     coordinates: {
       x: properties.coordinates.x,
       z: properties.coordinates.z
@@ -44,7 +44,7 @@ export function addRoadTile(properties: RoadObject, color: THREE.Color = new THR
     }
   }
 
-  addObjectClickListener(tileObj, (objectData: any) => onMouseClickFn(clickInfo), options);
+  addObjectClickListener(tileObject, (objectData: any) => onMouseClickFn(clickInfo), options);
 
-  return tileObj;
+  return tileObject;
 }

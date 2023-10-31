@@ -25,6 +25,7 @@ export class CanvasComponent {
   // constants
   screenOffset = 20.5;
   roadColor = new THREE.Color(0xf1db4b);
+  hasWireframeEnabled = false;
 
   // renderer
   renderer!: THREE.Renderer;
@@ -71,7 +72,6 @@ export class CanvasComponent {
     this.animate();
 
     this.addRoadToPlane();
-
   }
 
   addRoadToPlane() {
@@ -82,9 +82,8 @@ export class CanvasComponent {
     }
 
     Object.entries(this.roads).forEach(([key, value]) => {
-      console.log(value);
       value.forEach((road: RoadObject) => {
-        const tile = addRoadTile(road, this.roadColor, eventOptions, false)
+        const tile = addRoadTile(road, this.roadColor, eventOptions, this.hasWireframeEnabled)
         this.scene.add(tile);
       });
     });
