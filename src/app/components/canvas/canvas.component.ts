@@ -9,7 +9,7 @@ import { getWorldPlane } from "../../shared/engine/plane";
 import { getGridHelper } from "../../shared/engine/grid-helper";
 import { setControls } from "../../shared/engine/controls";
 import { RoadDataHardcoded } from "src/app/shared/data/roads";
-import { addRoadTile } from "src/app/shared/objects/road-tile";
+import { addRoadTile } from "src/app/shared/objects/road-tile.object";
 import { RoadObject } from "src/app/shared/models/road.model";
 
 
@@ -24,7 +24,7 @@ export class CanvasComponent {
 
   // constants
   screenOffset = 20.5;
-  roadColor = 0xf1db4b;
+  roadColor = new THREE.Color(0xf1db4b);
 
   // renderer
   renderer!: THREE.Renderer;
@@ -84,7 +84,7 @@ export class CanvasComponent {
     Object.entries(this.roads).forEach(([key, value]) => {
       console.log(value);
       value.forEach((road: RoadObject) => {
-        const tile = addRoadTile(road, this.roadColor, eventOptions)
+        const tile = addRoadTile(road, this.roadColor, eventOptions, false)
         this.scene.add(tile);
       });
     });
