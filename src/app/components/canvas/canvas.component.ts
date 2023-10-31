@@ -10,6 +10,7 @@ import { getGridHelper } from "../../shared/engine/grid-helper";
 import { setControls } from "../../shared/engine/controls";
 import { RoadDataHardcoded } from "src/app/shared/data/roads";
 import { addRoadTile } from "src/app/shared/objects/road-tile";
+import { RoadObject } from "src/app/shared/models/road.model";
 
 
 @Component({
@@ -23,6 +24,7 @@ export class CanvasComponent {
 
   // constants
   screenOffset = 20.5;
+  roadColor = 0xf1db4b;
 
   // renderer
   renderer!: THREE.Renderer;
@@ -68,25 +70,24 @@ export class CanvasComponent {
     this.controls = setControls(this.camera, this.renderer.domElement)
     this.animate();
 
-    const data = {
-      coordinates: { x: -2.5, z: -2.5 },
-      data: {
-        type: 'platza',
-        name: 'STR 0',
-        nr: '0.1',
-        description: 'Central Platza'
-      }
-    };
-    const color = 0xf1db4b;
+    this.addRoadToPlane();
+
+  }
+
+  addRoadToPlane() {
     const eventOptions = {
       raycaster: this.raycaster,
       camera: this.camera,
       scene: this.scene
     }
 
-    const tile = addRoadTile(data, color, eventOptions)
-
-    this.scene.add(tile);
+    Object.entries(this.roads).forEach(([key, value]) => {
+      console.log(value);
+      value.forEach((road: RoadObject) => {
+        const tile = addRoadTile(road, this.roadColor, eventOptions)
+        this.scene.add(tile);
+      });
+    });
   }
 
   animate() {

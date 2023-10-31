@@ -43,10 +43,12 @@ export const RoadDataHardcoded = {
   str1: [
     {
       coordinates: { x: 7.5, z: -2.5 },
-      type: 'main-road',
-      name: 'STR 1',
-      nr: '1.1',
-      description: 'Main road'
-    },
+      data: {
+        type: 'main-road',
+        name: 'STR 1',
+        nr: '1.1',
+        description: 'Main road'
+      }
+    }
   ]
 }
