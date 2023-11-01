@@ -57,9 +57,7 @@ export class EventsService {
       }
     });
 
-
     this.infoPanelService.setInfoPanel(clickInfo);
-    console.log('clickInfo in EventsService', clickInfo);
 
     const newColor = adjustColor(color, 40).getHexString()
     object.material.color.setHex('0x' + newColor)

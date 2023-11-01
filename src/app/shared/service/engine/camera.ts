@@ -20,7 +20,6 @@ export const cameraCurve = new THREE.CubicBezierCurve3(
   new THREE.Vector3(30, 25, 30)
 );
 
-
 @Injectable({
   providedIn: 'root'
 }) export class CameraService {

@@ -13,5 +13,4 @@ export class InfoPanelService {
   getInfoPanel() {
     return this._infoPanel;
   }
-
 }

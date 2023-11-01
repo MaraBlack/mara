@@ -94,7 +94,7 @@ export class CanvasComponent {
     this.renderer.setSize(window.innerWidth - this.screenOffset, window.innerHeight - this.screenOffset, true);
     (this.renderer as THREE.WebGLRenderer).shadowMap.enabled = true;
 
-    this.controls = this.controlsService.setControls(this.camera, this.renderer.domElement)
+    this.controls = this.controlsService.getControls(this.camera, this.renderer.domElement)
     this.animate();
 
     this.addRoadToPlane();

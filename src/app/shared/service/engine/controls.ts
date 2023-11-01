@@ -11,7 +11,7 @@ export class ControlsService {
     @param renderer
     @return OrbitControls
   */
-  setControls(camera: THREE.Camera, renderer: HTMLElement | undefined) {
+  getControls(camera: THREE.Camera, renderer: HTMLElement | undefined) {
     const controls = new OrbitControls(camera, renderer);
     controls.screenSpacePanning = true;
     controls.enableDamping = true;
