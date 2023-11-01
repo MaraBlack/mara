@@ -1,17 +1,17 @@
 import * as THREE from "three";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import { cameraAnimationTime, cameraCurve, cameraDefaults, enCamAnim, getCamera } from "../../shared/engine/camera";
-import { getPointLight } from "../../shared/engine/light";
-import { getWorldPlane } from "../../shared/engine/plane";
-import { getGridHelper } from "../../shared/engine/grid-helper";
-import { setControls } from "../../shared/engine/controls";
+import { CameraService, cameraAnimationTime, cameraCurve, cameraDefaults, enCamAnim } from "../../shared/service/engine/camera";
 import { RoadDataHardcoded } from "src/app/shared/data/roads";
-import { addRoadTile } from "src/app/shared/objects/road-tile.object";
 import { RoadObject } from "src/app/shared/models/road.model";
-
+import { RoadService } from "src/app/shared/service/objects/road-tile.object";
+import { InfoPanelService } from "src/app/shared/service/info-panel.service";
+import { ControlsService } from "src/app/shared/service/engine/controls";
+import { ObjectHelpers } from "src/app/shared/service/engine/grid-helper";
+import { LightsService } from "src/app/shared/service/engine/light";
+import { PlaneService } from "src/app/shared/service/engine/plane";
 
 @Component({
   selector: 'app-canvas',
@@ -24,7 +24,7 @@ export class CanvasComponent {
 
   // constants
   screenOffset = 20.5;
-  roadColor = new THREE.Color(0xf1db4b);
+  roadColor = new THREE.Color(0xf3d17c);
   hasWireframeEnabled = false;
 
   // renderer
@@ -41,14 +41,35 @@ export class CanvasComponent {
 
   // data
   roads = RoadDataHardcoded;
+  infoData: RoadObject = {
+    coordinates: {
+      x: 0,
+      y: 0,
+      z: 0
+    },
+    data: {
+      type: '',
+      name: '',
+      nr: '',
+      description: ''
+    }
+  };;
 
-  constructor() {
+  constructor(private roadService: RoadService,
+    private infoPanelService: InfoPanelService,
+    private cameraService: CameraService,
+    private controlsService: ControlsService,
+    private objectHelpersService: ObjectHelpers,
+    private lightService: LightsService,
+    private planeService: PlaneService
+  ) {
+
     window.addEventListener("resize", this.onWindowResize, false);
 
-    this.camera = getCamera();
-    this.plane = getWorldPlane();
-    this.pointLight = getPointLight();
-    this.gridHelper = getGridHelper();
+    this.camera = this.cameraService.getCamera();
+    this.plane = this.planeService.getWorldPlane();
+    this.pointLight = this.lightService.getPointLight();
+    this.gridHelper = this.objectHelpersService.getGridHelper();
 
     this.initGL();
   }
@@ -63,12 +84,17 @@ export class CanvasComponent {
     this.scene.add(this.gridHelper);
   }
 
+  getObjectInfoFromService() {
+    this.infoData = this.infoPanelService.getInfoPanel();
+    console.log('canvas', this.infoData);
+  }
+
   ngAfterViewInit() {
     this.renderer = new THREE.WebGLRenderer({ canvas: this.rendererContainer.nativeElement, antialias: true, alpha: true });
     this.renderer.setSize(window.innerWidth - this.screenOffset, window.innerHeight - this.screenOffset, true);
     (this.renderer as THREE.WebGLRenderer).shadowMap.enabled = true;
 
-    this.controls = setControls(this.camera, this.renderer.domElement)
+    this.controls = this.controlsService.setControls(this.camera, this.renderer.domElement)
     this.animate();
 
     this.addRoadToPlane();
@@ -81,12 +107,17 @@ export class CanvasComponent {
       scene: this.scene
     }
 
+    const group = new THREE.Object3D();
+    group.name = 'Road';
+
     Object.entries(this.roads).forEach(([key, value]) => {
       value.forEach((road: RoadObject) => {
-        const tile = addRoadTile(road, this.roadColor, eventOptions, this.hasWireframeEnabled)
-        this.scene.add(tile);
+        const tile = this.roadService.addRoadTile(road, this.roadColor, eventOptions, this.hasWireframeEnabled)
+        group.add(tile);
       });
     });
+
+    this.scene.add(group);
   }
 
   animate() {

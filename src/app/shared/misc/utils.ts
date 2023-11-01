@@ -1,6 +1,6 @@
 import * as THREE from "three";
 /*
-@param color - needs hex string
+@param color - needs THREE.Color(0xhex)
 @param amount - if amount > 0 the color will be brighter, if less, the color will darken
 @return hex color converted to THREE.Color
 */

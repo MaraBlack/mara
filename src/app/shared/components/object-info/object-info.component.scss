@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap");
+
+$primary: hsl(43, 83%, 72%);
+$secondary: hsl(224, 20%, 17%);
+$corner-dimension: 3ch;
+$corner-thickness: 4px;
+$corner-negative-thickness: calc(-1 * $corner-thickness);
+
+.object-info-container {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  position: relative;
+  padding: 2rem;
+  border: 1px solid $primary;
+  font-size: 20px;
+  // font-family: "Poppins", sans-serif;
+	color: $primary;
+	width: 320px;
+}
+
+.corners {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.corners > i {
+	content: "";
+	position: absolute;
+	width: $corner-dimension;
+	height: $corner-dimension;
+}
+
+.corners > i:nth-child(1) {
+	margin-top: -2px;
+	margin-left: -2px;
+	top: 0;
+	left: 0;
+	box-shadow: inset $corner-thickness $corner-thickness 0	$primary;
+}
+
+.corners > i:nth-child(2) {
+	margin-top: -2px;
+	margin-right: -2px;
+	top: 0;
+	right: 0;
+	box-shadow: inset $corner-negative-thickness $corner-thickness 0 $primary;
+}
+
+.corners > i:nth-child(3) {
+	margin-bottom: -2px;
+	margin-right: -2px;
+	bottom: 0;
+	right: 0;
+	box-shadow: inset $corner-negative-thickness $corner-negative-thickness 0 $primary;
+}
+
+.corners > i:nth-child(4) {
+	margin-bottom: -2px;
+	margin-left: -2px;
+	bottom: 0;
+	left: 0;
+	box-shadow: inset $corner-thickness $corner-negative-thickness 0 $primary;
+}
+
+
+span {
+	position: relative;
+	z-index: 10000;
+}
