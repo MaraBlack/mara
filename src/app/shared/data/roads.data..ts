@@ -1,7 +1,4 @@
-import { RoadObject } from "../models/road.model";
-
-
-export const RoadDataHardcoded = {
+export const RoadsDataHardcoded = {
   str0: [
     {
       coordinates: { x: -2.5, z: -2.5 },

@@ -4,7 +4,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { CameraService, cameraAnimationTime, cameraCurve, cameraDefaults, enCamAnim } from "../../shared/service/engine/camera";
-import { RoadDataHardcoded } from "src/app/shared/data/roads";
+import { RoadsDataHardcoded } from "src/app/shared/data/roads.data.";
 import { RoadObject } from "src/app/shared/models/road.model";
 import { RoadService } from "src/app/shared/service/objects/road-tile.object";
 import { InfoPanelService } from "src/app/shared/service/info-panel.service";
@@ -12,6 +12,9 @@ import { ControlsService } from "src/app/shared/service/engine/controls";
 import { ObjectHelpers } from "src/app/shared/service/engine/grid-helper";
 import { LightsService } from "src/app/shared/service/engine/light";
 import { PlaneService } from "src/app/shared/service/engine/plane";
+import { BuildingService } from "src/app/shared/service/objects/building.object";
+import { BuildingObject } from "src/app/shared/models/building.model";
+import { BuildingsDataHardcoded } from "src/app/shared/data/buildings.data";
 
 @Component({
   selector: 'app-canvas',
@@ -25,6 +28,7 @@ export class CanvasComponent {
   // constants
   screenOffset = 20.5;
   roadColor = new THREE.Color(0xf3d17c);
+  buildingColor = new THREE.Color(0x4d5460);
   hasWireframeEnabled = false;
 
   // renderer
@@ -40,20 +44,9 @@ export class CanvasComponent {
   controls!: OrbitControls;
 
   // data
-  roads = RoadDataHardcoded;
-  infoData: RoadObject = {
-    coordinates: {
-      x: 0,
-      y: 0,
-      z: 0
-    },
-    data: {
-      type: '',
-      name: '',
-      nr: '',
-      description: ''
-    }
-  };;
+  roads = RoadsDataHardcoded;
+  buildings = BuildingsDataHardcoded;
+  infoData!: RoadObject;
 
   constructor(private roadService: RoadService,
     private infoPanelService: InfoPanelService,
@@ -61,7 +54,8 @@ export class CanvasComponent {
     private controlsService: ControlsService,
     private objectHelpersService: ObjectHelpers,
     private lightService: LightsService,
-    private planeService: PlaneService
+    private planeService: PlaneService,
+    private buildingService: BuildingService
   ) {
 
     window.addEventListener("resize", this.onWindowResize, false);
@@ -97,10 +91,11 @@ export class CanvasComponent {
     this.controls = this.controlsService.getControls(this.camera, this.renderer.domElement)
     this.animate();
 
-    this.addRoadToPlane();
+    this.addRoadsToPlane();
+    this.addBuildingsToPlane();
   }
 
-  addRoadToPlane() {
+  addRoadsToPlane() {
     const eventOptions = {
       raycaster: this.raycaster,
       camera: this.camera,
@@ -114,6 +109,26 @@ export class CanvasComponent {
       value.forEach((road: RoadObject) => {
         const tile = this.roadService.addRoadTile(road, this.roadColor, eventOptions, this.hasWireframeEnabled)
         group.add(tile);
+      });
+    });
+
+    this.scene.add(group);
+  }
+
+  addBuildingsToPlane() {
+    const eventOptions = {
+      raycaster: this.raycaster,
+      camera: this.camera,
+      scene: this.scene
+    }
+
+    const group = new THREE.Object3D();
+    group.name = 'Buildings';
+
+    Object.entries(this.buildings).forEach(([key, value]) => {
+      value.forEach((building: BuildingObject) => {
+        const skyscraper = this.buildingService.addBuilding(building, this.buildingColor, eventOptions, this.hasWireframeEnabled)
+        group.add(skyscraper);
       });
     });
 
