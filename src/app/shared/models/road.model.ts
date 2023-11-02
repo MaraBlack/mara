@@ -1,18 +1,9 @@
-import { ObjectType } from "./object-types.enum";
-import { PlaneCoordinates } from "./plane-coordinates.model";
+import { ObjectData, ObjectProperties } from "./object.model";
 
-export interface RoadData {
-  type: string,
-  name: string,
-  nr: string,
-  description?: {
-    text: string
-  }
+export interface RoadData extends ObjectData {
+  nr: string
 }
 
-export interface RoadObject {
-  uuid?: string,
-  coordinates: PlaneCoordinates,
-  objectType: ObjectType,
+export interface RoadObject extends ObjectProperties {
   data: RoadData
 }

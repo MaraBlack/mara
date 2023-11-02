@@ -1,7 +1,6 @@
 import * as THREE from "three";
 
 import { Injectable } from '@angular/core';
-import { RoadObject } from "../../models/road.model";
 import { EventOptions } from "../../models/event-options.model";
 import { adjustColor } from "../../misc/utils";
 import { EventsService } from "../engine/events";

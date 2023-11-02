@@ -2,11 +2,9 @@ import * as THREE from "three";
 
 import { Injectable } from '@angular/core';
 import { EventOptions } from "../../models/event-options.model";
-import { adjustColor } from "../../misc/utils";
 import { InfoPanelService } from "../info-panel.service";
 import { RoadObject } from "../../models/road.model";
 import { BuildingObject } from "../../models/building.model";
-import { ObjectType } from "../../models/object-types.enum";
 import { ObjectData } from "../../models/object.model";
 
 @Injectable({

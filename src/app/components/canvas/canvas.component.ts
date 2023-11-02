@@ -11,7 +11,6 @@ import { InfoPanelService } from "src/app/shared/service/info-panel.service";
 import { ControlsService } from "src/app/shared/service/engine/controls";
 import { ObjectHelpers } from "src/app/shared/service/engine/grid-helper";
 import { LightsService } from "src/app/shared/service/engine/light";
-// import { PlaneService } from "src/app/shared/service/engine/ground";
 import { BuildingService } from "src/app/shared/service/objects/building.object";
 import { BuildingObject } from "src/app/shared/models/building.model";
 import { BuildingsDataHardcoded } from "src/app/shared/data/buildings.data";
