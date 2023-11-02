@@ -11,10 +11,14 @@ import { InfoPanelService } from "src/app/shared/service/info-panel.service";
 import { ControlsService } from "src/app/shared/service/engine/controls";
 import { ObjectHelpers } from "src/app/shared/service/engine/grid-helper";
 import { LightsService } from "src/app/shared/service/engine/light";
-import { PlaneService } from "src/app/shared/service/engine/plane";
+// import { PlaneService } from "src/app/shared/service/engine/ground";
 import { BuildingService } from "src/app/shared/service/objects/building.object";
 import { BuildingObject } from "src/app/shared/models/building.model";
 import { BuildingsDataHardcoded } from "src/app/shared/data/buildings.data";
+import { PlaneService } from "src/app/shared/service/engine/plane";
+import { EventOptions } from "src/app/shared/models/event-options.model";
+import { ObjectType } from "src/app/shared/models/object-types.enum";
+import { IntroHardcoded } from "src/app/shared/data/intro.data";
 
 @Component({
   selector: 'app-canvas',
@@ -29,6 +33,7 @@ export class CanvasComponent {
   screenOffset = 20.5;
   roadColor = new THREE.Color(0xf3d17c);
   buildingColor = new THREE.Color(0x4d5460);
+  groundColor = new THREE.Color(0xa7a8aa);
   hasWireframeEnabled = false;
 
   // renderer
@@ -44,9 +49,14 @@ export class CanvasComponent {
   controls!: OrbitControls;
 
   // data
+  intro = IntroHardcoded;
   roads = RoadsDataHardcoded;
   buildings = BuildingsDataHardcoded;
-  infoData!: RoadObject;
+  infoData!: any;
+
+
+  //events
+  eventOptions!: EventOptions;
 
   constructor(private roadService: RoadService,
     private infoPanelService: InfoPanelService,
@@ -57,30 +67,35 @@ export class CanvasComponent {
     private planeService: PlaneService,
     private buildingService: BuildingService
   ) {
-
     window.addEventListener("resize", this.onWindowResize, false);
-
-    this.camera = this.cameraService.getCamera();
-    this.plane = this.planeService.getWorldPlane();
-    this.pointLight = this.lightService.getPointLight();
-    this.gridHelper = this.objectHelpersService.getGridHelper();
-
     this.initGL();
   }
 
   initGL() {
     this.scene = new THREE.Scene();
+    this.scene.name = ObjectType.SCENE;
     this.scene.receiveShadow = true;
+
+    this.camera = this.cameraService.getCamera();
+    this.pointLight = this.lightService.getPointLight();
+
+    this.eventOptions = {
+      raycaster: this.raycaster,
+      camera: this.camera,
+      scene: this.scene
+    }
+
+    this.plane = this.planeService.getWorldPlane(this.intro, this.groundColor, 0.8, this.eventOptions);
+    // this.gridHelper = this.objectHelpersService.getGridHelper();
 
     this.scene.add(this.camera);
     this.scene.add(this.plane);
     this.scene.add(this.pointLight);
-    this.scene.add(this.gridHelper);
+    // this.scene.add(this.gridHelper);
   }
 
   getObjectInfoFromService() {
     this.infoData = this.infoPanelService.getInfoPanel();
-    console.log('canvas', this.infoData);
   }
 
   ngAfterViewInit() {
@@ -88,26 +103,22 @@ export class CanvasComponent {
     this.renderer.setSize(window.innerWidth - this.screenOffset, window.innerHeight - this.screenOffset, true);
     (this.renderer as THREE.WebGLRenderer).shadowMap.enabled = true;
 
-    this.controls = this.controlsService.getControls(this.camera, this.renderer.domElement)
-    this.animate();
+    this.controls = this.controlsService.getControls(this.camera, this.renderer.domElement);
 
     this.addRoadsToPlane();
     this.addBuildingsToPlane();
+    this.animate();
   }
 
   addRoadsToPlane() {
-    const eventOptions = {
-      raycaster: this.raycaster,
-      camera: this.camera,
-      scene: this.scene
-    }
+
 
     const group = new THREE.Object3D();
     group.name = 'Road';
 
     Object.entries(this.roads).forEach(([key, value]) => {
       value.forEach((road: RoadObject) => {
-        const tile = this.roadService.addRoadTile(road, this.roadColor, eventOptions, this.hasWireframeEnabled)
+        const tile = this.roadService.addRoadTile(road, this.roadColor, this.eventOptions, this.hasWireframeEnabled)
         group.add(tile);
       });
     });
@@ -116,18 +127,12 @@ export class CanvasComponent {
   }
 
   addBuildingsToPlane() {
-    const eventOptions = {
-      raycaster: this.raycaster,
-      camera: this.camera,
-      scene: this.scene
-    }
-
     const group = new THREE.Object3D();
     group.name = 'Buildings';
 
     Object.entries(this.buildings).forEach(([key, value]) => {
       value.forEach((building: BuildingObject) => {
-        const skyscraper = this.buildingService.addBuilding(building, this.buildingColor, eventOptions, this.hasWireframeEnabled)
+        const skyscraper = this.buildingService.addBuilding(building, this.buildingColor, this.eventOptions, this.hasWireframeEnabled)
         group.add(skyscraper);
       });
     });

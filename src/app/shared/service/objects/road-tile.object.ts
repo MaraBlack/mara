@@ -5,6 +5,7 @@ import { RoadObject } from "../../models/road.model";
 import { EventOptions } from "../../models/event-options.model";
 import { adjustColor } from "../../misc/utils";
 import { EventsService } from "../engine/events";
+import { ObjectType } from "../../models/object-types.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { EventsService } from "../engine/events";
 export class RoadService {
 
   constructor(private eventsService: EventsService) { }
+
   /*
     @param properties - uuid, coordinates and data, RoadObject interface
     @param color - default is white, preffered is 0xf1db4b
@@ -34,7 +36,7 @@ export class RoadService {
     const tileObject = new THREE.Mesh(tileBoxGeom, tileColorMesh);
     tileObject.position.set(properties.coordinates.x, 0, properties.coordinates.z);
     tileObject.receiveShadow = true;
-    tileObject.name = properties.data.name;
+    tileObject.name = ObjectType.ROAD + '_tile';
 
     const clickInfo: RoadObject = {
       uuid: tileObject.uuid,
@@ -42,6 +44,7 @@ export class RoadService {
         x: properties.coordinates.x,
         z: properties.coordinates.z
       },
+      objectType: properties.objectType,
       data: {
         name: properties.data.name,
         type: properties.data.type,

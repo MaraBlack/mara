@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import { IntroHardcoded } from '../../data/intro.data';
 
 @Component({
   selector: 'app-object-info',
   templateUrl: './object-info.component.html',
   styleUrls: ['./object-info.component.scss']
 })
-export class ObjectInfoComponent {
+export class ObjectInfoComponent implements OnChanges {
+
+  @Input() infoPanel: any;
+
+  title = IntroHardcoded.name;
+  description = IntroHardcoded.description?.text;
+
+  ngOnChanges() {
+    if (this.infoPanel) {
+      this.title = this.infoPanel.name ? this.infoPanel.name : this.infoPanel.data.name
+      this.description = this.infoPanel.description ? this.infoPanel.description.text : this.infoPanel.data.description.text;
+    }
+  }
 
 }

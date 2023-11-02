@@ -4,6 +4,10 @@ import { Injectable } from '@angular/core';
 import { EventOptions } from "../../models/event-options.model";
 import { adjustColor } from "../../misc/utils";
 import { InfoPanelService } from "../info-panel.service";
+import { RoadObject } from "../../models/road.model";
+import { BuildingObject } from "../../models/building.model";
+import { ObjectType } from "../../models/object-types.enum";
+import { ObjectData } from "../../models/object.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +15,7 @@ import { InfoPanelService } from "../info-panel.service";
 export class EventsService {
 
   constructor(private infoPanelService: InfoPanelService) { }
+
   /*
     @param objectToWatch - for uuid
     @param onMouseClick - function to be executed at click
@@ -30,36 +35,41 @@ export class EventsService {
 
         const intersects = options.raycaster.intersectObjects(options.scene.children);
 
-        const isIntersected = intersects.find(
-          (intersectedElement: any) => intersectedElement.object.uuid === objectToWatchId
-        );
+        if (intersects.length > 0) {
+          const intersectedElement = intersects.find(
+            (intersectedElement: any) => intersectedElement.object.uuid === objectToWatchId
+          );
 
-        if (isIntersected) {
-          onMouseClick();
+          if (intersectedElement) {
+            onMouseClick();
+          }
         }
       });
+
   };
 
   /*
+    @param clickInfo - info to be displayed in info panel
     @param object - to change the color at event
     @param onMouseClick - default color
   */
-  onMouseClickFn(clickInfo: any, object: any, color: THREE.Color) {
+  onMouseClickFn(clickInfo: RoadObject | BuildingObject | ObjectData | any, object: any, color: THREE.Color) {
     const defaultColor = color.getHexString();
-    const allSiblings = object.parent.children;
-
-    // reset color if it's not the default one
-    allSiblings.forEach((elementFromGroup: any) => {
-      const curretColor = elementFromGroup.material.color.getHexString();
-      if (curretColor !== defaultColor) {
-        elementFromGroup.material.color.setHex('0x' + defaultColor);
-        elementFromGroup.material.needsUpdate = true
-      }
-    });
-
     this.infoPanelService.setInfoPanel(clickInfo);
 
-    const newColor = adjustColor(color, 40).getHexString()
-    object.material.color.setHex('0x' + newColor)
+    // const allSiblings = object.parent.children;
+
+    // // reset color if it's not the default one
+    // allSiblings.forEach((elementFromGroup: any) => {
+    //   const curretColor = elementFromGroup.material.color.getHexString();
+    //   if (curretColor !== defaultColor) {
+    //     elementFromGroup.material.color.setHex('0x' + defaultColor);
+    //     elementFromGroup.material.needsUpdate = true
+    //   }
+    // });
+
+
+    // const newColor = adjustColor(color, 40).getHexString()
+    // object.material.color.setHex('0x' + newColor)
   }
 }

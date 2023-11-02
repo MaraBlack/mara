@@ -1,14 +1,9 @@
-import { PlaneCoordinates } from "./plane-coordinates.model"
+import { ObjectData, ObjectProperties } from "./object.model"
 
-export interface BuildingData {
-  type: string,
-  name: string,
-  neighborhood: string,
-  description?: string[]
+export interface BuildingData extends ObjectData {
+  neighborhood: string
 }
 
-export interface BuildingObject {
-  uuid?: string,
-  coordinates: PlaneCoordinates,
+export interface BuildingObject extends ObjectProperties {
   data: BuildingData
 }

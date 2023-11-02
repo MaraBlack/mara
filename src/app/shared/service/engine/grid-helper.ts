@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { Injectable } from '@angular/core';
+import { ObjectType } from "../../models/object-types.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class ObjectHelpers {
   getGridHelper(size: number = 100, divisions: number = 20) {
     const gridHelper = new THREE.GridHelper(size, divisions);
     gridHelper.receiveShadow = true;
+    gridHelper.name = ObjectType.GRID_HEPLER
     gridHelper.position.set(0, 0, 0)
 
     return gridHelper;
