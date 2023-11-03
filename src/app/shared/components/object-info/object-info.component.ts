@@ -10,13 +10,21 @@ export class ObjectInfoComponent implements OnChanges {
 
   @Input() infoPanel: any;
 
+  absoluteAssetsPath = '../../../../assets/';
   title = IntroHardcoded.name;
   description = IntroHardcoded.description?.text;
+  image = '';
 
   ngOnChanges() {
     if (this.infoPanel) {
       this.title = this.infoPanel.name ? this.infoPanel.name : this.infoPanel.data.name
       this.description = this.infoPanel.description ? this.infoPanel.description.text : this.infoPanel.data.description.text;
+
+      if (this.infoPanel.data?.description?.image || this.infoPanel.description?.image) {
+        this.image = this.absoluteAssetsPath + this.infoPanel.data.description.image;
+      } else {
+        this.image = '';
+      }
     }
   }
 

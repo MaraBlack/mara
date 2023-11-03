@@ -77,6 +77,7 @@ export class CanvasComponent {
 
     this.camera = this.cameraService.getCamera();
     this.pointLight = this.lightService.getPointLight();
+    this.plane = this.planeService.getWorldPlane();
 
     this.eventOptions = {
       raycaster: this.raycaster,
@@ -84,7 +85,6 @@ export class CanvasComponent {
       scene: this.scene
     }
 
-    this.plane = this.planeService.getWorldPlane(this.intro, this.groundColor, 0.8, this.eventOptions);
     // this.gridHelper = this.objectHelpersService.getGridHelper();
 
     this.scene.add(this.camera);

@@ -4,19 +4,22 @@ import { ObjectType } from "../models/object-types.enum";
 export const BuildingsDataHardcoded = {
   gaming: [
     {
-      coordinates: { x: -10, y: 10, z: -10 },
+      coordinates: { x: -10, y: 20, z: -10 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'waisting time',
-        name: 'Dota2 player',
+        type: 'Traveling',
+        name: 'Urban Explorer',
         neighborhood: 'Area 125',
         description: {
-          text: 'dota something something'
+          text: `City breaks are my kind of escape. I thrive on the energy of bustling streets, the history of ancient
+          landmarks, and the flavor of diverse cultures.Join me as I delve into the heart of cities, one short adventure at a time.Let's
+          explore urban wonders, uncover hidden gems, and savor the essence of each destination.Come along for a taste of the city life!`,
+          image: 'europe.png'
         }
       }
     },
     {
-      coordinates: { x: -30, y: 20, z: -30 },
+      coordinates: { x: -25, y: 25, z: -25 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'self improvement',

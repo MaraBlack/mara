@@ -23,27 +23,42 @@ export class EventsService {
     const objectToWatchId = objectToWatch.uuid;
     let mouse = new THREE.Vector2();
 
-    document.addEventListener(
-      "pointerdown",
-      (event) => {
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    document.addEventListener("pointerdown", event => {
 
-        options.raycaster.setFromCamera(mouse, options.camera);
+      event.preventDefault();
 
-        const intersects = options.raycaster.intersectObjects(options.scene.children);
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        if (intersects.length > 0) {
-          const intersectedElement = intersects.find(
-            (intersectedElement: any) => intersectedElement.object.uuid === objectToWatchId
-          );
 
-          if (intersectedElement) {
-            onMouseClick();
-          }
+
+      options.raycaster.setFromCamera(mouse, options.camera);
+
+      const intersects = options.raycaster.intersectObjects(options.scene.children);
+
+      if (intersects.length > 0) {
+        const intersectedElement = intersects.find(
+          (intersectedElement: any) => intersectedElement.object.uuid === objectToWatchId
+        );
+
+        if (intersectedElement) {
+          onMouseClick();
         }
-      });
+      }
 
+      switch (event.button) {
+        case 0: // left 
+          break;
+        case 1: // middle
+          break;
+        case 2: // right
+          {
+
+          }
+          break;
+
+      }
+    });
   };
 
   /*

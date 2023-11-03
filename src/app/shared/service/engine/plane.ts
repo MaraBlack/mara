@@ -11,7 +11,7 @@ import { ObjectData } from "../../models/object.model";
 })
 export class PlaneService {
 
-  constructor(private eventsService: EventsService) { }
+  constructor() { }
 
   /*
     @param properties - ObjectDat interface
@@ -19,7 +19,7 @@ export class PlaneService {
     @param reflectivity
     @return PlaneGeometry
   */
-  getWorldPlane(properties: ObjectData, color: THREE.Color = new THREE.Color(), reflectivity: number = 0.8, options: EventOptions) {
+  getWorldPlane(color: THREE.Color = new THREE.Color(), reflectivity: number = 0.8) {
     const lambertMaterial = new THREE.MeshLambertMaterial({
       color: color,
       reflectivity: reflectivity
@@ -31,14 +31,6 @@ export class PlaneService {
     plane.rotation.x = Math.PI * -.5
     plane.receiveShadow = true
     plane.name = ObjectType.GROUND;
-
-    const clickInfo: ObjectData = {
-      type: properties.type,
-      name: properties.name,
-      description: properties.description
-    }
-
-    this.eventsService.addObjectClickListener(plane, (objectData: any) => this.eventsService.onMouseClickFn(clickInfo, plane, color), options);
 
     return plane;
   }

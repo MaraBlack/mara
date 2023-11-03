@@ -1,5 +1,6 @@
 import { ObjectType } from "../models/object-types.enum";
 import { RoadObject } from "../models/road.model";
+import { IntroHardcoded } from "./intro.data";
 
 export const RoadsDataHardcoded = {
   str0: [
@@ -8,10 +9,10 @@ export const RoadsDataHardcoded = {
       objectType: ObjectType.ROAD,
       data: {
         type: 'platza',
-        name: 'STR 0',
+        name: IntroHardcoded.name,
         nr: '0.1',
         description: {
-          text: 'Central Platza'
+          text: IntroHardcoded.description?.text
         }
       }
     },
@@ -20,10 +21,10 @@ export const RoadsDataHardcoded = {
       objectType: ObjectType.ROAD,
       data: {
         type: 'platza',
-        name: 'STR 0',
+        name: IntroHardcoded.name,
         nr: '0.2',
         description: {
-          text: 'Central Platza'
+          text: IntroHardcoded.description?.text
         }
       }
     },
@@ -32,23 +33,22 @@ export const RoadsDataHardcoded = {
       objectType: ObjectType.ROAD,
       data: {
         type: 'platza',
-        name: 'STR 0',
+        name: IntroHardcoded.name,
         nr: '0.3',
         description: {
-          text: 'Central Platza'
+          text: IntroHardcoded.description?.text
         }
       }
-
     },
     {
       coordinates: { x: -2.5, z: 2.5 },
       objectType: ObjectType.ROAD,
       data: {
         type: 'platza',
-        name: 'STR 0',
+        name: IntroHardcoded.name,
         nr: '0.4',
         description: {
-          text: 'Central Platza'
+          text: IntroHardcoded.description?.text
         }
       }
     }],
@@ -66,4 +66,4 @@ export const RoadsDataHardcoded = {
       }
     }
   ]
-} as { [key: string]: RoadObject[] }
+} as { [key: string]: any[] }
