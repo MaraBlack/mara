@@ -1,5 +1,7 @@
 import * as THREE from "three";
 
+import { Injectable } from '@angular/core';
+
 export const cameraDefaults = {
   posCamera: new THREE.Vector3(0.0, 250.0, 0.0),
   posCameraTarget: new THREE.Vector3(0, 300, 0),
@@ -19,15 +21,23 @@ export const cameraCurve = new THREE.CubicBezierCurve3(
   new THREE.Vector3(30, 25, 30)
 );
 
-export function getCamera() {
-  const camera = new THREE.PerspectiveCamera(
-    cameraDefaults.fov,
-    cameraDefaults.aspectRatio,
-    cameraDefaults.near,
-    cameraDefaults.far
-  );
-  camera.position.copy(cameraDefaults.posCamera);
-  camera.updateProjectionMatrix();
+@Injectable({
+  providedIn: 'root'
+}) export class CameraService {
 
-  return camera;
+  /*
+    @return PerspectiveCamera
+  */
+  getCamera() {
+    const camera = new THREE.PerspectiveCamera(
+      cameraDefaults.fov,
+      cameraDefaults.aspectRatio,
+      cameraDefaults.near,
+      cameraDefaults.far
+    );
+    camera.position.copy(cameraDefaults.posCamera);
+    camera.updateProjectionMatrix();
+
+    return camera;
+  }
 }
