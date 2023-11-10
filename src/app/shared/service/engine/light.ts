@@ -12,7 +12,7 @@ export class LightsService {
   */
   getPointLight(color: THREE.ColorRepresentation = new THREE.Color()) {
     const light = new THREE.PointLight(color, 1000, 400, 2);
-    light.position.set(0, 50, 0);
+    light.position.set(0, 60, 0);
     light.castShadow = true;
 
     return light;

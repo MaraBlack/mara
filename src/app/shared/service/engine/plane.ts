@@ -1,10 +1,7 @@
 import * as THREE from "three";
 
 import { Injectable } from '@angular/core';
-import { EventOptions } from "../../models/event-options.model";
-import { EventsService } from "./events";
 import { ObjectType } from "../../models/object-types.enum";
-import { ObjectData } from "../../models/object.model";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +22,7 @@ export class PlaneService {
       reflectivity: reflectivity
     });
 
-    const planeGeo = new THREE.PlaneGeometry(150, 150);
+    const planeGeo = new THREE.PlaneGeometry(124, 124);
 
     const plane = new THREE.Mesh(planeGeo, lambertMaterial);
     plane.rotation.x = Math.PI * -.5

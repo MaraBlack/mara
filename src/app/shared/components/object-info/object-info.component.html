@@ -20,9 +20,10 @@
   </div>
 </div>
 
-<div *ngIf="image !== ''" class="object-info-container">
+<div *ngIf="image !== ''" class="object-info-container" [style.width]="width + 'px'">
   <div class="info-img">
     <img [src]="image" height="350">
+
   </div>
 
   <div class="corners">

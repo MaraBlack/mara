@@ -28,7 +28,8 @@ export class BuildingService {
     let skyscraperColorMesh = null;
 
     const base = new THREE.BoxGeometry(10, 0.5, 10, this.segments, this.segments, this.segments);
-    const building = new THREE.BoxGeometry(8, height, 8, this.segments, this.segments, this.segments);
+    const lv0 = new THREE.BoxGeometry(8, 5, 8, this.segments, this.segments, this.segments);
+    const building = new THREE.BoxGeometry(7, height, 7, this.segments, this.segments, this.segments);
 
     if (wireframe === true) {
       skyscraperColorMesh = new THREE.MeshStandardMaterial({ color: adjustColor(color, -40), roughness: 0.2, wireframe: true });
@@ -36,12 +37,18 @@ export class BuildingService {
       skyscraperColorMesh = new THREE.MeshLambertMaterial({ color: color });
     }
 
-
-    const baseObject = new THREE.Mesh(base, skyscraperColorMesh);
+    const baseColor = new THREE.MeshLambertMaterial({ color: 0x333840 });
+    const baseObject = new THREE.Mesh(base, baseColor);
     baseObject.position.set(properties.coordinates.x, 0, properties.coordinates.z);
     baseObject.castShadow = true;
     baseObject.receiveShadow = true;
     baseObject.name = ObjectType.BUILDING + '_base'
+
+    const lv0Object = new THREE.Mesh(lv0, baseColor);
+    lv0Object.position.set(properties.coordinates.x, height / 6, properties.coordinates.z);
+    lv0Object.castShadow = true;
+    lv0Object.receiveShadow = true;
+    lv0Object.name = ObjectType.BUILDING + '_lv0'
 
     const buildingObject = new THREE.Mesh(building, skyscraperColorMesh);
     buildingObject.position.set(properties.coordinates.x, height / 2, properties.coordinates.z);
@@ -52,7 +59,11 @@ export class BuildingService {
     const group = new THREE.Group();
     group.name = ObjectType.BUILDING + '_group'
     group.add(baseObject);
+    group.add(lv0Object);
     group.add(buildingObject);
+
+    // group.position.y = 2.5;
+
 
     const clickInfo: BuildingObject = {
       uuid: group.uuid,

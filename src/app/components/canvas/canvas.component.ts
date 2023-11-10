@@ -110,8 +110,6 @@ export class CanvasComponent {
   }
 
   addRoadsToPlane() {
-
-
     const group = new THREE.Object3D();
     group.name = 'Road';
 

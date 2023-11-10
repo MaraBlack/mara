@@ -15,6 +15,8 @@ export class ObjectInfoComponent implements OnChanges {
   description = IntroHardcoded.description?.text;
   image = '';
 
+  width = 330;
+
   ngOnChanges() {
     if (this.infoPanel) {
       this.title = this.infoPanel.name ? this.infoPanel.name : this.infoPanel.data.name
@@ -26,6 +28,10 @@ export class ObjectInfoComponent implements OnChanges {
         this.image = '';
       }
     }
+  }
+
+  resize() {
+    this.width = 500;
   }
 
 }
