@@ -42,8 +42,11 @@ export class CanvasComponent {
   // scene objects
   camera!: THREE.PerspectiveCamera;
   pointLight!: THREE.PointLight;
+  directionalLight!: THREE.DirectionalLight;
+  ambientLight!: THREE.AmbientLight;
   scene!: THREE.Scene;
   plane!: THREE.Mesh;
+  dome!: THREE.Mesh;
   gridHelper!: THREE.GridHelper;
   controls!: OrbitControls;
 
@@ -52,7 +55,6 @@ export class CanvasComponent {
   roads = RoadsDataHardcoded;
   buildings = BuildingsDataHardcoded;
   infoData!: any;
-
 
   //events
   eventOptions!: EventOptions;
@@ -76,8 +78,13 @@ export class CanvasComponent {
     this.scene.receiveShadow = true;
 
     this.camera = this.cameraService.getCamera();
+
     this.pointLight = this.lightService.getPointLight();
+    this.directionalLight = this.lightService.getDirectionalLight();
+    this.ambientLight = this.lightService.getAmbientLight();
+
     this.plane = this.planeService.getWorldPlane();
+    this.dome = this.planeService.getDome();
 
     this.eventOptions = {
       raycaster: this.raycaster,
@@ -86,11 +93,15 @@ export class CanvasComponent {
     }
 
     // this.gridHelper = this.objectHelpersService.getGridHelper();
+    // this.scene.add(this.gridHelper);
 
     this.scene.add(this.camera);
     this.scene.add(this.plane);
+    this.scene.add(this.dome);
+
     this.scene.add(this.pointLight);
-    // this.scene.add(this.gridHelper);
+    this.scene.add(this.directionalLight);
+    this.scene.add(this.ambientLight);
   }
 
   getObjectInfoFromService() {

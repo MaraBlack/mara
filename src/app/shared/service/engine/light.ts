@@ -17,4 +17,23 @@ export class LightsService {
 
     return light;
   }
+
+  /*
+    @param color - default is 0x906f94
+    @return DirectionalLight
+  */
+  getDirectionalLight(color: THREE.ColorRepresentation = new THREE.Color(0x906f94)) {
+    const light = new THREE.DirectionalLight(color);
+    light.position.set(-1, -1, -1);
+    return light;
+  }
+
+  /*
+    @param color - default is 0x827e7e
+    @return AmbientLight
+  */
+  getAmbientLight(color: THREE.ColorRepresentation = new THREE.Color(0x827e7e)) {
+    const light = new THREE.AmbientLight(color);
+    return light;
+  }
 }

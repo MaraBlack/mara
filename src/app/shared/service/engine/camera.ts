@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { Injectable } from '@angular/core';
 
 export const cameraDefaults = {
-  posCamera: new THREE.Vector3(0.0, 250.0, 0.0),
+  posCamera: new THREE.Vector3(100, 40, 100),
   posCameraTarget: new THREE.Vector3(0, 300, 0),
   near: 0.1,
   far: 10000,

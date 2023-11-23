@@ -18,7 +18,7 @@ export class ControlsService {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.minDistance = 10;
-    controls.maxDistance = 400;
+    controls.maxDistance = 200;
     controls.autoRotate = false;
     controls.enablePan = true;
 

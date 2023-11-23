@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Orbitron");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
 
 $primary: hsl(43, 83%, 72%);
 $secondary: hsl(224, 20%, 17%);
@@ -12,8 +12,8 @@ $corner-negative-thickness: calc(-1 * $corner-thickness);
   background: rgba(255, 255, 255, 0.06);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 
   border: 1px solid rgba(255, 255, 255, 0.45);
   position: relative;
@@ -21,9 +21,9 @@ $corner-negative-thickness: calc(-1 * $corner-thickness);
   border: 1px solid $primary;
 	color: $primary;
 
-	-moz-box-shadow:inset 0 0 24px rgb(241, 238, 198, 0.24);
-  -webkit-box-shadow:inset 0 0 24px rgb(241, 238, 198, 0.24);
-  box-shadow:inset 0 0 24px rgb(241, 238, 198, 0.24);
+	-moz-box-shadow:inset 0 0 28px rgb(241, 238, 198, 0.24);
+  -webkit-box-shadow:inset 0 0 28px rgb(241, 238, 198, 0.24);
+  box-shadow:inset 0 0 28px rgb(241, 238, 198, 0.24);
 }
 
 .corners {
@@ -79,8 +79,8 @@ span {
 	z-index: 10000;
 
 	font-size: 20px;
-  font-family: "Orbitron", sans-serif;
-	letter-spacing: 2px;
+  font-family: "Inconsolata", sans-serif;
+	letter-spacing: 1.5px;
 	line-height: 1.5;
 	text-align: justify;
 	hyphens: auto;

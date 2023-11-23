@@ -1,6 +1,10 @@
 import { BuildingObject } from "../models/building.model";
 import { ObjectType } from "../models/object-types.enum";
 
+function generateRandomInteger(min: number, max: number) {
+  return Math.floor(min + Math.random() * (max - min + 1))
+}
+
 export const BuildingsDataHardcoded = {
   experience: [
     {
@@ -265,11 +269,11 @@ export const BuildingsDataHardcoded = {
   ],
   empty: [
     {
-      coordinates: { x: 20, y: 10, z: 35 },
+      coordinates: { x: 20, y: generateRandomInteger(10, 20), z: 35 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 001',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -277,11 +281,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: 30, y: 10, z: 30 },
+      coordinates: { x: 30, y: generateRandomInteger(10, 20), z: 30 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 002',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -289,11 +293,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: -10, y: 10, z: 40 },
+      coordinates: { x: -10, y: generateRandomInteger(10, 20), z: 40 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 003',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -301,11 +305,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: 30, y: 10, z: 20 },
+      coordinates: { x: 30, y: generateRandomInteger(10, 20), z: 20 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 004',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -313,11 +317,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: -30, y: 10, z: 10 },
+      coordinates: { x: -30, y: generateRandomInteger(10, 20), z: 10 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 005',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -325,11 +329,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: -30, y: 10, z: 20 },
+      coordinates: { x: -30, y: generateRandomInteger(10, 20), z: 20 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 006',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -337,11 +341,23 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: -35, y: 10, z: -5 },
+      coordinates: { x: -35, y: generateRandomInteger(10, 20), z: -5 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 007',
+        neighborhood: 'No Area',
+        description: {
+          text: `In a quest to find a new adventure!`,
+        }
+      }
+    },
+    {
+      coordinates: { x: -35, y: generateRandomInteger(10, 20), z: -20 },
+      objectType: ObjectType.BUILDING,
+      data: {
+        type: 'TBD',
+        name: 'To be discovered 008',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -349,11 +365,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: -35, y: 10, z: -20 },
+      coordinates: { x: -25, y: generateRandomInteger(10, 20), z: -20 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 009',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -361,11 +377,23 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: -25, y: 10, z: -20 },
+      coordinates: { x: -15, y: generateRandomInteger(10, 20), z: -30 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 010',
+        neighborhood: 'No Area',
+        description: {
+          text: `In a quest to discover myself more!`,
+        }
+      }
+    },
+    {
+      coordinates: { x: -25, y: generateRandomInteger(10, 20), z: -30 },
+      objectType: ObjectType.BUILDING,
+      data: {
+        type: 'TBD',
+        name: 'To be discovered 011',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -373,11 +401,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: -15, y: 10, z: -30 },
+      coordinates: { x: 0, y: generateRandomInteger(10, 20), z: -30 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 012',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -385,11 +413,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: -25, y: 10, z: -30 },
+      coordinates: { x: 0, y: generateRandomInteger(10, 20), z: -40 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 013',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -397,11 +425,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: 0, y: 10, z: -30 },
+      coordinates: { x: 10, y: generateRandomInteger(10, 20), z: -35 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 014',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -409,11 +437,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: 0, y: 10, z: -40 },
+      coordinates: { x: 20, y: generateRandomInteger(10, 20), z: -35 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 015',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -421,11 +449,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: 10, y: 10, z: -35 },
+      coordinates: { x: 30, y: generateRandomInteger(10, 20), z: -30 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 016',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -433,35 +461,11 @@ export const BuildingsDataHardcoded = {
       }
     },
     {
-      coordinates: { x: 20, y: 10, z: -35 },
+      coordinates: { x: 40, y: generateRandomInteger(10, 20), z: -30 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered',
-        neighborhood: 'No Area',
-        description: {
-          text: `On a quest for a new hobby, eager to explore and create memories`,
-        }
-      }
-    },
-    {
-      coordinates: { x: 30, y: 10, z: -30 },
-      objectType: ObjectType.BUILDING,
-      data: {
-        type: 'TBD',
-        name: 'To be discovered',
-        neighborhood: 'No Area',
-        description: {
-          text: `On a quest for a new hobby, eager to explore and create memories`,
-        }
-      }
-    },
-    {
-      coordinates: { x: 40, y: 10, z: -30 },
-      objectType: ObjectType.BUILDING,
-      data: {
-        type: 'TBD',
-        name: 'To be discovered',
+        name: 'To be discovered 017',
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
