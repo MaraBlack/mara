@@ -15,6 +15,10 @@ export class EventsService {
 
   constructor(private infoPanelService: InfoPanelService) { }
 
+  prevClickedObject = {
+    uuid: ''
+  }
+
   /*
     @param objectToWatch - for uuid
     @param onMouseClick - function to be executed at click
@@ -55,22 +59,60 @@ export class EventsService {
     @param onMouseClick - default color
   */
   onMouseClickFn(clickInfo: RoadObject | BuildingObject | ObjectData | any, object: any, color: THREE.Color) {
-    const defaultColor = color.getHexString();
+
     this.infoPanelService.setInfoPanel(clickInfo);
 
+    if (clickInfo.objectType === 'Road') {
+      this.setTileColor(object, color)
+    }
+
+    if (clickInfo.objectType === 'Building') {
+      this.setObjectColor(object, clickInfo.data.color);
+    }
+
+    this.prevClickedObject.uuid = clickInfo.uuid;
+  }
+
+
+  private setTileColor(object: any, color: THREE.Color) {
+    const defaultColor = color.getHexString();
     const allSiblings = object.parent.children;
 
     // reset color if it's not the default one
     allSiblings.forEach((elementFromGroup: any) => {
       const curretColor = elementFromGroup.material.color.getHexString();
       if (curretColor !== defaultColor) {
-        elementFromGroup.material.color.setHex('0x' + defaultColor);
+        elementFromGroup.material = new THREE.MeshLambertMaterial({ color: color });
         elementFromGroup.material.needsUpdate = true
       }
     });
 
+    object.material = new THREE.MeshStandardMaterial({
+      toneMapped: false,
+      emissive: '#faec91',
+      // emissive: color,
+      emissiveIntensity: 1
+    })
+  }
 
-    const newColor = adjustColor(color, -40).getHexString()
-    object.material.color.setHex('0x' + newColor)
+  private setObjectColor(object: any, color: any) {
+    const allSiblings = object.parent.parent.children;
+
+    // if (this.prevClickedObject.uuid !== '') {
+    //   const foundIndex = allSiblings.findIndex((obj: any) => obj.uuid === this.prevClickedObject.uuid);
+    //   if (foundIndex > -1) {
+    //     allSiblings[foundIndex].children[0].material = new THREE.MeshPhongMaterial({
+    //       color: [0xd3d5db, 0xffffff, 0x9fa3ab, 0xcfd0d1][Math.random() * 4 | 0]
+    //     });
+
+    //   }
+    // }
+
+    object.material = new THREE.MeshStandardMaterial({
+      toneMapped: false,
+      emissive: color,
+      // emissive: color,
+      emissiveIntensity: 0.5
+    })
   }
 }

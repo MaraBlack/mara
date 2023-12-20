@@ -13,6 +13,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Experience',
         name: 'NTT DATA (Jan 2022 - Present)',
+        color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
           text: `I'm a web developer at NTT DATA, specializing in Angular development mostly and I've had the 
@@ -28,6 +29,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Experience',
         name: 'eMAG (Oct 2021 - Jan 2022)',
+        color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
           text: `I had a relatively brief experience at eMAG company, where I worked with Angular and 
@@ -42,6 +44,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Experience',
         name: 'Endava (Jan 2020 - Oct 2021)',
+        color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
           text: `At Endava company, I had the opportunity to work with clients like FIS Global's Worldpay, 
@@ -58,6 +61,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Experience',
         name: 'Cerner (July 2018 - Jan 2020)',
+        color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
           text: `While at Cerner company which was swallowed by Oracle and now goes by Oracle name, 
@@ -73,6 +77,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Experience',
         name: 'Siemens (Jan 2017 - Jul 2018)',
+        color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
           text: `I started my developer career at Siemens company with an internship program, initially learning QT with C++. 
@@ -90,6 +95,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Travel',
         name: 'Urban explorer',
+        color: "#b8e0cb",
         neighborhood: 'Area 16',
         description: {
           text: `City breaks are my kind of escape. I thrive on the energy of bustling streets, 
@@ -106,6 +112,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Travel',
         name: 'Discover Romania',
+        color: "#b8e0cb",
         neighborhood: 'Area 16',
         description: {
           text: `I'm based in Romania, and I have a genuine interest in exploring the customs and traditions 
@@ -118,11 +125,12 @@ export const BuildingsDataHardcoded = {
   ],
   drawing: [
     {
-      coordinates: { x: 10, y: 38, z: 5 },
+      coordinates: { x: 10, y: 34, z: 5 },
       objectType: ObjectType.BUILDING,
       data: {
         type: 'Drawing',
         name: 'Exploring Minimalism in Digital Art',
+        color: "#ded3e8",
         neighborhood: 'Area 234',
         description: {
           text: `I have a deep passion for art, particularly in the realm of digital drawings.
@@ -138,6 +146,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Drawing',
         name: ' Capturing Moments on My Sketchbook',
+        color: "#ded3e8",
         neighborhood: 'Area 234',
         description: {
           text: `Alongside my digital art, I also find solace in the simplicity of my sketchbook. 
@@ -155,6 +164,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Gaming',
         name: 'Turbo Mode Adventures',
+        color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
           text: `I'm a Dota 2 enthusiast, and I enjoy the fast-paced action of Turbo mode. In each game, I aim 
@@ -169,6 +179,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Gaming',
         name: 'Chess Journey',
+        color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
           text: `I've recently delved into the world of chess as a beginner, but my determination to learn 
@@ -183,6 +194,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Gaming',
         name: 'Conquering with Druids, Warriors, and Warlocks',
+        color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
           text: `I enjoy playing auto-chess, especially during wait times or while doing cardio on the treadmill 
@@ -197,6 +209,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Gaming',
         name: 'PlayStation Adventures',
+        color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
           text: `I enjoy gaming on PlayStation from time to time, and my favorite games are 'It Takes Two,' which 
@@ -212,6 +225,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Gaming',
         name: 'Board Game Gatherings',
+        color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
           text: `I love gathering with friends, especially on New Year's night, to enjoy the 
@@ -230,6 +244,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Outside',
         name: '410 Gym Gone ',
+        color: "#ded9b4",
         neighborhood: 'Area 24',
         description: {
           text: `I used to frequent the gym, but lately, my priorities have shifted, and I'm not going anymore.
@@ -244,6 +259,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Outside',
         name: 'Dive into Progress',
+        color: "#ded9b4",
         neighborhood: 'Area 24',
         description: {
           text: `I make time for the swimming pool whenever I can, and recently, I've embarked on an 
@@ -259,6 +275,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'Outside',
         name: 'Exploring on Two Wheels',
+        color: "#ded9b4",
         neighborhood: 'Area 24',
         description: {
           text: `I love exploring the city on my bike, especially when accompanied by friends.
@@ -274,6 +291,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 001',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -286,6 +304,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 002',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -298,6 +317,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 003',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -310,6 +330,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 004',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -322,6 +343,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 005',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -334,6 +356,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 006',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -346,6 +369,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 007',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `In a quest to find a new adventure!`,
@@ -358,6 +382,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 008',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -370,6 +395,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 009',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -382,6 +408,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 010',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `In a quest to discover myself more!`,
@@ -394,6 +421,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 011',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -406,6 +434,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 012',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -418,6 +447,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 013',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -430,6 +460,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 014',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -442,6 +473,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 015',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -454,6 +486,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 016',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,
@@ -466,6 +499,7 @@ export const BuildingsDataHardcoded = {
       data: {
         type: 'TBD',
         name: 'To be discovered 017',
+        color: "white",
         neighborhood: 'No Area',
         description: {
           text: `On a quest for a new hobby, eager to explore and create memories`,

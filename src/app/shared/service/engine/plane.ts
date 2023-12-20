@@ -24,7 +24,7 @@ export class PlaneService {
       side: THREE.DoubleSide
     });
 
-    const planeGeo = new THREE.PlaneGeometry(200, 200);
+    const planeGeo = new THREE.PlaneGeometry(150, 150);
 
     const plane = new THREE.Mesh(planeGeo, planeMaterial);
     plane.rotation.x = Math.PI * -.5
