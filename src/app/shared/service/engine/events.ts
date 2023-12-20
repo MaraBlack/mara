@@ -6,6 +6,7 @@ import { InfoPanelService } from "../info-panel.service";
 import { RoadObject } from "../../models/road.model";
 import { BuildingObject } from "../../models/building.model";
 import { ObjectData } from "../../models/object.model";
+import { adjustColor } from "../../misc/utils";
 
 @Injectable({
   providedIn: 'root'
@@ -45,19 +46,6 @@ export class EventsService {
           onMouseClick();
         }
       }
-
-      switch (event.button) {
-        case 0: // left 
-          break;
-        case 1: // middle
-          break;
-        case 2: // right
-          {
-
-          }
-          break;
-
-      }
     });
   };
 
@@ -70,19 +58,19 @@ export class EventsService {
     const defaultColor = color.getHexString();
     this.infoPanelService.setInfoPanel(clickInfo);
 
-    // const allSiblings = object.parent.children;
+    const allSiblings = object.parent.children;
 
-    // // reset color if it's not the default one
-    // allSiblings.forEach((elementFromGroup: any) => {
-    //   const curretColor = elementFromGroup.material.color.getHexString();
-    //   if (curretColor !== defaultColor) {
-    //     elementFromGroup.material.color.setHex('0x' + defaultColor);
-    //     elementFromGroup.material.needsUpdate = true
-    //   }
-    // });
+    // reset color if it's not the default one
+    allSiblings.forEach((elementFromGroup: any) => {
+      const curretColor = elementFromGroup.material.color.getHexString();
+      if (curretColor !== defaultColor) {
+        elementFromGroup.material.color.setHex('0x' + defaultColor);
+        elementFromGroup.material.needsUpdate = true
+      }
+    });
 
 
-    // const newColor = adjustColor(color, 40).getHexString()
-    // object.material.color.setHex('0x' + newColor)
+    const newColor = adjustColor(color, -40).getHexString()
+    object.material.color.setHex('0x' + newColor)
   }
 }

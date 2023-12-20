@@ -6,6 +6,7 @@ import { adjustColor } from "../../misc/utils";
 import { EventsService } from "../engine/events";
 import { BuildingObject } from "../../models/building.model";
 import { ObjectType } from "../../models/object-types.enum";
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 @Injectable({
   providedIn: 'root'
@@ -34,18 +35,18 @@ export class BuildingService {
     // }
 
     const base = new THREE.BoxGeometry(10, 0.5, 10, this.segments, this.segments, this.segments);
-    const building = new THREE.BoxGeometry(7, height, 7, this.segments, this.segments, this.segments);
+    const building = new RoundedBoxGeometry(7, height, 7, 1, 1);
 
     const material = new THREE.MeshPhongMaterial({
-      color: [0xfb3550, 0xffffff, 0x4d5460][Math.random() * 3 | 0],
+      color: [0xd3d5db, 0xffffff, 0x9fa3ab, 0xcfd0d1][Math.random() * 4 | 0],
       wireframe: wireframe ? true : false
     });
 
-    const baseObject = new THREE.Mesh(base, material);
-    baseObject.position.set(properties.coordinates.x, 0, properties.coordinates.z);
-    baseObject.castShadow = true;
-    baseObject.receiveShadow = true;
-    baseObject.name = ObjectType.BUILDING + '_base'
+    // const baseObject = new THREE.Mesh(base, material);
+    // baseObject.position.set(properties.coordinates.x, 0, properties.coordinates.z);
+    // baseObject.castShadow = true;
+    // baseObject.receiveShadow = true;
+    // baseObject.name = ObjectType.BUILDING + '_base'
 
     const buildingObject = new THREE.Mesh(building, material);
     buildingObject.position.set(properties.coordinates.x, height / 2, properties.coordinates.z);
@@ -55,7 +56,7 @@ export class BuildingService {
 
     const group = new THREE.Group();
     group.name = ObjectType.BUILDING + '_group'
-    group.add(baseObject);
+    // group.add(baseObject);
     group.add(buildingObject);
 
     const clickInfo: BuildingObject = {

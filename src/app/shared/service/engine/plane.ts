@@ -11,11 +11,11 @@ export class PlaneService {
   constructor() { }
 
   /*
-    @param color - default is white, preferred 0xa7a8aa
+    @param color - default is white
     @param reflectivity - default 0.8
     @return PlaneGeometry
   */
-  getWorldPlane(color: THREE.Color = new THREE.Color(0xf5f7fa), reflectivity: number = 0.8) {
+  getWorldPlane(color: THREE.Color = new THREE.Color(), reflectivity: number = 0.8) {
     const planeMaterial = new THREE.MeshPhongMaterial({
       color: color,
       opacity: 0.5,
@@ -24,7 +24,7 @@ export class PlaneService {
       side: THREE.DoubleSide
     });
 
-    const planeGeo = new THREE.PlaneGeometry(100, 100);
+    const planeGeo = new THREE.PlaneGeometry(200, 200);
 
     const plane = new THREE.Mesh(planeGeo, planeMaterial);
     plane.rotation.x = Math.PI * -.5
@@ -35,10 +35,10 @@ export class PlaneService {
   }
 
   /*
-    @param color - default id 0x9c8386
+    @param color - default id 0xe3e1e1
     @return IcosahedronGeometry
   */
-  getDome(color: THREE.Color = new THREE.Color(0x9c8386)) {
+  getDome(color: THREE.Color = new THREE.Color(0xe3e1e1)) {
     const domeMaterial = new THREE.MeshPhongMaterial({
       color: color,
       transparent: true,
