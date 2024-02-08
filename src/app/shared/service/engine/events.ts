@@ -7,16 +7,16 @@ import { RoadObject } from "../../models/road.model";
 import { BuildingObject } from "../../models/building.model";
 import { ObjectData } from "../../models/object.model";
 import { adjustColor } from "../../misc/utils";
+import { BuildingService } from "../objects/building.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
 
-  constructor(private infoPanelService: InfoPanelService) { }
+  originalMaterials = [];
 
-  prevClickedObject = {
-    uuid: ''
+  constructor(private infoPanelService: InfoPanelService) {
   }
 
   /*
@@ -67,10 +67,8 @@ export class EventsService {
     }
 
     if (clickInfo.objectType === 'Building') {
-      this.setObjectColor(object, clickInfo.data.color);
+      this.setObjectColor(object, color);
     }
-
-    this.prevClickedObject.uuid = clickInfo.uuid;
   }
 
 
@@ -90,29 +88,25 @@ export class EventsService {
     object.material = new THREE.MeshStandardMaterial({
       toneMapped: false,
       emissive: '#faec91',
-      // emissive: color,
-      emissiveIntensity: 1
+      emissiveIntensity: 0.6
     })
   }
 
   private setObjectColor(object: any, color: any) {
     const allSiblings = object.parent.parent.children;
 
-    // if (this.prevClickedObject.uuid !== '') {
-    //   const foundIndex = allSiblings.findIndex((obj: any) => obj.uuid === this.prevClickedObject.uuid);
-    //   if (foundIndex > -1) {
-    //     allSiblings[foundIndex].children[0].material = new THREE.MeshPhongMaterial({
-    //       color: [0xd3d5db, 0xffffff, 0x9fa3ab, 0xcfd0d1][Math.random() * 4 | 0]
-    //     });
+    if (this.originalMaterials.length === 0) {
+      this.originalMaterials = allSiblings.map((item: any) => { return item.children[0].material; });
+    }
 
-    //   }
-    // }
+    object.parent.parent.children.map((o: any, i: number) => (
+      o.children[0].material = this.originalMaterials[i]
+    ));
 
     object.material = new THREE.MeshStandardMaterial({
       toneMapped: false,
       emissive: color,
-      // emissive: color,
-      emissiveIntensity: 0.5
+      emissiveIntensity: 0.6
     })
   }
 }

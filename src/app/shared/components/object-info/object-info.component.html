@@ -1,35 +1,13 @@
 <div class="object-info-container">
-  <span style="font-size: 24px">{{ title }}</span>
-
-  <div class="corners">
-    <i></i>
-    <i></i>
-    <i></i>
-    <i></i>
-  </div>
+  <span class="info-title">{{ title }}</span>
 </div>
 
 <div class="object-info-container">
   <span> {{ description }}</span>
-
-  <div class="corners">
-    <i></i>
-    <i></i>
-    <i></i>
-    <i></i>
-  </div>
 </div>
 
 <div *ngIf="image !== ''" class="object-info-container" [style.width]="width + 'px'">
   <div class="info-img">
     <img [src]="image" height="350">
-
-  </div>
-
-  <div class="corners">
-    <i></i>
-    <i></i>
-    <i></i>
-    <i></i>
   </div>
 </div>

@@ -6,18 +6,18 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { CameraService, cameraAnimationTime, cameraCurve, cameraDefaults, enCamAnim } from "../../shared/service/engine/camera";
 import { RoadsDataHardcoded } from "src/app/shared/data/roads.data.";
 import { RoadObject } from "src/app/shared/models/road.model";
-import { RoadService } from "src/app/shared/service/objects/road-tile.object";
 import { InfoPanelService } from "src/app/shared/service/info-panel.service";
 import { ControlsService } from "src/app/shared/service/engine/controls";
 import { ObjectHelpers } from "src/app/shared/service/engine/grid-helper";
 import { LightsService } from "src/app/shared/service/engine/light";
-import { BuildingService } from "src/app/shared/service/objects/building.object";
+import { BuildingService } from "src/app/shared/service/objects/building.service";
 import { BuildingObject } from "src/app/shared/models/building.model";
 import { BuildingsDataHardcoded } from "src/app/shared/data/buildings.data";
 import { PlaneService } from "src/app/shared/service/engine/plane";
 import { EventOptions } from "src/app/shared/models/event-options.model";
 import { ObjectType } from "src/app/shared/models/object-types.enum";
 import { IntroHardcoded } from "src/app/shared/data/intro.data";
+import { RoadService } from "src/app/shared/service/objects/road-tile.service";
 
 @Component({
   selector: 'app-canvas',
@@ -145,6 +145,7 @@ export class CanvasComponent {
       });
     });
 
+    this.buildingService.generatedBuildings = group;
     this.scene.add(group);
   }
 
