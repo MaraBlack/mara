@@ -21,7 +21,7 @@ export class ObjectInfoComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.infoPanel) {
-      this.title = this.infoPanel.name ? this.infoPanel.name : this.infoPanel.data.name
+      this.title = this.infoPanel.name ? this.infoPanel.name[0] : this.infoPanel.data.name[0]
       this.description = this.infoPanel.description ? this.infoPanel.description.text : this.infoPanel.data.description.text;
 
       if (this.infoPanel.data?.description?.image || this.infoPanel.description?.image) {

@@ -1,28 +1,121 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
 @import "../../../shared/scss/global.scss";
 
 .nav-container {
-  @extend .transparent-container;
-  width: 80px;
   display: flex;
   flex-direction: column;
-  height: 97%;
+  height: 100%;
+
+  .nav {
+    // background-color: rgba($heavy-dark-grey, 0.1);
+    background-color: $mid-dark-grey-tr;
+    padding: 4%;
+    margin: 2%;
+    border-radius: 12px;
+
+    .nav-item {
+      cursor: pointer;
+
+      font-size: 36px;
+      justify-content: space-between;
+      font-family: "Ubuntu Mono", sans-serif;
+      color: $grey;
+    }
+
+    .sub-nav-item {
+      cursor: pointer;
+      display: flex;
+      margin: 4% 0;
+      padding: 4%;
+      font-size: 28px;
+      color: $heavy-dark-grey;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $primary;
+      }
+
+      .description {
+        font-size: 22px;
+        margin-left: auto;
+        color: $dark-grey;
+        align-items: center;
+        display: grid;
+      }
+    }
+  }
+
+  .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    // background-color: $mid-dark-grey;
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: $mid-dark-grey;
+    padding: 10px 15px;
+    width: 45px;
+    height: 90px;
+    border: none;
+    border-radius: 0 10rem 10rem 0;
+  }
+
+  .openbtn:hover {
+    background-color: rgba($heavy-dark-grey, 0.7);
+  }
+
+  #main {
+    display: grid;
+    align-items: center;
+    height: 100%;
+  }
+
+  .toggleOn {
+    width: 500px;
+  }
+
+  .toggleOff {
+    width: 0;
+    margin-left: 0;
+  }
+
+  .btnToggleOn {
+    transition: margin-left .5s;
+    margin-left: 500px;
+  }
+
+  .btnToggleOff {
+    transition: margin-left .5s;
+    margin-left: 0;
+  }
 }
 
-.svg-nav-icon {
-  align-items: center;
-  display: inline-grid;
-  margin: 16%;
+/* overwrite scroll css */
+
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-.theme-svg {
-  flex: 1;
-  align-items: end;
+/* Track */
+::-webkit-scrollbar-track {
+  background: $mid-dark-grey
 }
 
-.isActive {
-  border-left: 2px solid $primary;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $grey;
+  border-radius: 24px;
 }
 
-.isNotActive {
-  border: none;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $heavy-dark-grey;
 }

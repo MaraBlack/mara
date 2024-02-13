@@ -7,13 +7,13 @@ function generateRandomInteger(min: number, max: number) {
 }
 
 export const BuildingsDataHardcoded = {
-  experience: [
+  Business: [
     {
       coordinates: { x: 0, y: 48, z: -10 },
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.BUSINESS,
-        name: 'NTT DATA (Jan 2022 - Present)',
+        name: ['NTT DATA', 'Jan 2022 - present'],
         color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
@@ -29,7 +29,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.BUSINESS,
-        name: 'eMAG (Oct 2021 - Jan 2022)',
+        name: ['eMAG', 'Oct 2021 - Jan 2022'],
         color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
@@ -44,7 +44,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.BUSINESS,
-        name: 'Endava (Jan 2020 - Oct 2021)',
+        name: ['Endava', 'Jan 2020 - Oct 2021)'],
         color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
@@ -61,7 +61,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.BUSINESS,
-        name: 'Cerner (July 2018 - Jan 2020)',
+        name: ['Cerner', 'July 2018 - Jan 2020'],
         color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
@@ -77,7 +77,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.BUSINESS,
-        name: 'Siemens (Jan 2017 - Jul 2018)',
+        name: ['Siemens', 'Jan 2017 - Jul 2018'],
         color: "#abcbde",
         neighborhood: 'Area 135',
         description: {
@@ -89,13 +89,13 @@ export const BuildingsDataHardcoded = {
       }
     }
   ],
-  travel: [
+  Travel: [
     {
       coordinates: { x: 15, y: 40, z: -20 },
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.TRAVEL,
-        name: 'Urban explorer',
+        name: ['Urban explorer'],
         color: "#b8e0cb",
         neighborhood: 'Area 16',
         description: {
@@ -112,7 +112,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.TRAVEL,
-        name: 'Discover Romania',
+        name: ['Discover Romania'],
         color: "#b8e0cb",
         neighborhood: 'Area 16',
         description: {
@@ -124,13 +124,13 @@ export const BuildingsDataHardcoded = {
       }
     },
   ],
-  drawing: [
+  Drawing: [
     {
       coordinates: { x: 10, y: 34, z: 5 },
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.DRAWING,
-        name: 'Exploring Minimalism in Digital Art',
+        name: ['Exploring Minimalism in Digital Art'],
         color: "#ded3e8",
         neighborhood: 'Area 234',
         description: {
@@ -146,7 +146,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.DRAWING,
-        name: ' Capturing Moments on My Sketchbook',
+        name: [' Capturing Moments on My Sketchbook'],
         color: "#ded3e8",
         neighborhood: 'Area 234',
         description: {
@@ -158,13 +158,13 @@ export const BuildingsDataHardcoded = {
       }
     },
   ],
-  gaming: [
+  Gaming: [
     {
       coordinates: { x: -15, y: 40, z: 20 },
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.GAMING,
-        name: 'Turbo Mode Adventures',
+        name: ['Turbo Mode Adventures'],
         color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
@@ -179,7 +179,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.GAMING,
-        name: 'Chess Journey',
+        name: ['Chess Journey'],
         color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
@@ -194,7 +194,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.GAMING,
-        name: 'Conquering with Druids, Warriors, and Warlocks',
+        name: ['Conquering with Druids, Warriors, and Warlocks'],
         color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
@@ -209,7 +209,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.GAMING,
-        name: 'PlayStation Adventures',
+        name: ['PlayStation Adventures'],
         color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
@@ -225,7 +225,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.GAMING,
-        name: 'Board Game Gatherings',
+        name: ['Board Game Gatherings'],
         color: "#d9b3a3",
         neighborhood: 'Area 234',
         description: {
@@ -238,13 +238,13 @@ export const BuildingsDataHardcoded = {
       }
     }
   ],
-  outsideAcctivities: [
+  Outdoor: [
     {
       coordinates: { x: 25, y: 16, z: 5 },
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.OUTDOOR,
-        name: '410 Gym Gone ',
+        name: ['410 Gym Gone '],
         color: "#ded9b4",
         neighborhood: 'Area 24',
         description: {
@@ -259,7 +259,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.OUTDOOR,
-        name: 'Dive into Progress',
+        name: ['Dive into Progress'],
         color: "#ded9b4",
         neighborhood: 'Area 24',
         description: {
@@ -275,7 +275,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: AcctivityTypes.OUTDOOR,
-        name: 'Exploring on Two Wheels',
+        name: ['Exploring on Two Wheels'],
         color: "#ded9b4",
         neighborhood: 'Area 24',
         description: {
@@ -291,7 +291,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 001',
+        name: ['To be discovered 001'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -304,7 +304,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 002',
+        name: ['To be discovered 002'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -317,7 +317,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 003',
+        name: ['To be discovered 003'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -330,7 +330,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 004',
+        name: ['To be discovered 004'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -343,7 +343,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 005',
+        name: ['To be discovered 005'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -356,7 +356,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 006',
+        name: ['To be discovered 006'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -369,7 +369,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 007',
+        name: ['To be discovered 007'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -382,7 +382,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 008',
+        name: ['To be discovered 008'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -395,7 +395,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 009',
+        name: ['To be discovered 009'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -408,7 +408,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 010',
+        name: ['To be discovered 010'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -421,7 +421,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 011',
+        name: ['To be discovered 011'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -434,7 +434,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 012',
+        name: ['To be discovered 012'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -447,7 +447,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 013',
+        name: ['To be discovered 013'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -460,7 +460,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 014',
+        name: ['To be discovered 014'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -473,7 +473,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 015',
+        name: ['To be discovered 015'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -486,7 +486,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 016',
+        name: ['To be discovered 016'],
         color: "white",
         neighborhood: 'No Area',
         description: {
@@ -499,7 +499,7 @@ export const BuildingsDataHardcoded = {
       objectType: ObjectType.BUILDING,
       data: {
         type: 'TBD',
-        name: 'To be discovered 017',
+        name: ['To be discovered 017'],
         color: "white",
         neighborhood: 'No Area',
         description: {

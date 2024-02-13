@@ -2,30 +2,34 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu");
 @import "../../../shared/scss/global.scss";
 
-
-
 .object-info-container {
   // @extend .transparent-container;
-  width: 452px;
+  width: 516px;
+  margin: 4px 0;
+  padding: 2%;
   color: $heavy-dark-grey;
   align-items: center;
-  // border: 0.1px solid $light-grey;
-
 
   .title {
     @extend .transparrent-section;
 
     display: flex;
-    font-size: 32px;
+    font-size: 36px;
     justify-content: space-between;
     font-family: "Ubuntu Mono", sans-serif;
     color: $grey;
+
+    .info-title {
+      width: 100%;
+      align-items: center;
+      display: grid;
+    }
   }
 
   .description {
     @extend .transparrent-section;
 
-    font-size: 22px;
+    font-size: 28px;
     color: $dark-grey;
   }
 
@@ -41,7 +45,6 @@
     }
 
     height: 350px;
-    // width: 100%;
     overflow: hidden;
   }
 }
@@ -53,7 +56,7 @@ span {
 
 
 .svg-icon {
-  width: 18%;
+  width: 92px;
   margin-left: 4%;
   align-items: center;
   display: inline-grid;

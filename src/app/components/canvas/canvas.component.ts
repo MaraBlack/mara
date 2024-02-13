@@ -29,7 +29,6 @@ export class CanvasComponent {
   rendererContainer!: ElementRef;
 
   // constants
-  screenOffset = 20.5;
   roadColor = new THREE.Color(0xf3d17c);
   buildingColor = new THREE.Color(0x4d5460);
   groundColor = new THREE.Color(0xa7a8aa);
@@ -68,13 +67,12 @@ export class CanvasComponent {
     private planeService: PlaneService,
     private buildingService: BuildingService
   ) {
-    window.addEventListener("resize", this.onWindowResize, false);
     this.initGL();
   }
 
   navItemClicked($event: string) {
     console.log($event);
-    
+
   }
 
   initGL() {
@@ -114,11 +112,18 @@ export class CanvasComponent {
   }
 
   ngAfterViewInit() {
+    const element = document.getElementById('canvas-container');
+    const height = element?.offsetHeight || window.innerHeight;
+    const width = element?.offsetWidth || window.innerWidth;
+
+
     this.renderer = new THREE.WebGLRenderer({ canvas: this.rendererContainer.nativeElement, antialias: true, alpha: true });
-    this.renderer.setSize(window.innerWidth - this.screenOffset, window.innerHeight - this.screenOffset, true);
+    this.renderer.setSize(width, height, true);
     (this.renderer as THREE.WebGLRenderer).shadowMap.enabled = true;
 
     this.controls = this.controlsService.getControls(this.camera, this.renderer.domElement);
+
+    window.addEventListener("resize", this.onWindowResize, false);
 
     this.addRoadsToPlane();
     this.addBuildingsToPlane();
@@ -151,6 +156,7 @@ export class CanvasComponent {
     });
 
     this.buildingService.generatedBuildings = group;
+
     this.scene.add(group);
   }
 
