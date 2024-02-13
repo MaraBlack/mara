@@ -46,7 +46,7 @@ export class BuildingService {
     buildingObject.position.set(properties.coordinates.x, height / 2, properties.coordinates.z);
     buildingObject.castShadow = true;
     buildingObject.receiveShadow = true;
-    buildingObject.name = ObjectType.BUILDING + '_object'
+    buildingObject.name = ObjectType.BUILDING + '_object_from_' + properties.data.type
 
     const group = new THREE.Group();
     group.name = ObjectType.BUILDING + '_group'

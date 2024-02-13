@@ -1,0 +1,35 @@
+@import "./tooltip.scss";
+
+$transparrency: .5;
+
+$primary: #f3d17c;
+$secondary: #232734;
+
+$light-grey: #d3d5db;
+$grey: #cfd0d1;
+$dark-grey: #9fa3ab;
+$mid-dark-grey: #727273;
+$heavy-dark-grey:#323233;
+
+$light-grey-tr: rgba($light-grey, $transparrency);
+$grey-tr: rgba($grey, $transparrency);
+$dark-grey-tr: rgba($dark-grey, $transparrency);
+$mid-dark-grey-tr: rgba($mid-dark-grey, $transparrency);
+$heavy-dark-grey-tr:rgba($heavy-dark-grey, $transparrency);
+
+.transparent-container {
+  background: rgb(75 76 73 / 6%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  margin: 4px 0;
+  padding: 2%;
+  border-radius: 12px;
+}
+
+.transparrent-section {
+  padding: 4%;
+  margin-top: 2%;
+  border-radius: 12px;
+  background-color: $mid-dark-grey-tr;
+}

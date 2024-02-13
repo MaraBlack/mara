@@ -71,7 +71,13 @@ export class EventsService {
     }
   }
 
-
+  setColorOnSelectedGroup(groupName: string){
+    
+  }
+  /*
+    @param object - object that will be changed
+    @param color - color that will be applied on the selected object
+  */
   private setTileColor(object: any, color: THREE.Color) {
     const defaultColor = color.getHexString();
     const allSiblings = object.parent.children;
@@ -92,6 +98,10 @@ export class EventsService {
     })
   }
 
+  /*
+    @param object - object that will be changed
+    @param color - color that will be applied on the selected object
+  */
   private setObjectColor(object: any, color: any) {
     const allSiblings = object.parent.parent.children;
 

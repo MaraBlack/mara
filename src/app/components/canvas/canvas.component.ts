@@ -72,6 +72,11 @@ export class CanvasComponent {
     this.initGL();
   }
 
+  navItemClicked($event: string) {
+    console.log($event);
+    
+  }
+
   initGL() {
     this.scene = new THREE.Scene();
     this.scene.name = ObjectType.SCENE;

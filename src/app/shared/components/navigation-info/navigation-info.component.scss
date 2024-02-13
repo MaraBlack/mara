@@ -1,0 +1,28 @@
+@import "../../../shared/scss/global.scss";
+
+.nav-container {
+  @extend .transparent-container;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  height: 97%;
+}
+
+.svg-nav-icon {
+  align-items: center;
+  display: inline-grid;
+  margin: 16%;
+}
+
+.theme-svg {
+  flex: 1;
+  align-items: end;
+}
+
+.isActive {
+  border-left: 2px solid $primary;
+}
+
+.isNotActive {
+  border: none;
+}

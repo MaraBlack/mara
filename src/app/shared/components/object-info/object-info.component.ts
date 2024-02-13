@@ -14,6 +14,8 @@ export class ObjectInfoComponent implements OnChanges {
   title = IntroHardcoded.name;
   description = IntroHardcoded.description?.text;
   image = '';
+  expandColapseSvg = this.absoluteAssetsPath + 'svg/arrow-up.svg';
+  expandColapseState = true;
 
   width = 330;
 
@@ -28,6 +30,11 @@ export class ObjectInfoComponent implements OnChanges {
         this.image = '';
       }
     }
+  }
+
+  onExpandColapseClick() {
+    this.expandColapseState = !this.expandColapseState;
+    this.expandColapseSvg = this.expandColapseState ?  this.absoluteAssetsPath + 'svg/arrow-up.svg' : this.absoluteAssetsPath + 'svg/arrow-down.svg'
   }
 
   resize() {

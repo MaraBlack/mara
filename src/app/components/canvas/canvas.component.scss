@@ -1,6 +1,14 @@
 #info-container {
   position: fixed;
   z-index: 99;
-  top: 8%;
-  right: 8%;
+  top: 4%;
+  right: 2%;
+}
+
+#nav-info-container {
+  position: fixed;
+  z-index: 99;
+  top: 1%;
+  left: 0.5%;
+  height: 100%;
 }

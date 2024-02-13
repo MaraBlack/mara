@@ -1,3 +1,4 @@
+import { AcctivityTypes } from "../models/acctivity-types.mode";
 import { BuildingObject } from "../models/building.model";
 import { ObjectType } from "../models/object-types.enum";
 
@@ -11,7 +12,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 0, y: 48, z: -10 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Experience',
+        type: AcctivityTypes.BUSINESS,
         name: 'NTT DATA (Jan 2022 - Present)',
         color: "#abcbde",
         neighborhood: 'Area 135',
@@ -27,7 +28,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: -10, y: 16, z: -5 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Experience',
+        type: AcctivityTypes.BUSINESS,
         name: 'eMAG (Oct 2021 - Jan 2022)',
         color: "#abcbde",
         neighborhood: 'Area 135',
@@ -42,7 +43,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: -10, y: 40, z: -15 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Experience',
+        type: AcctivityTypes.BUSINESS,
         name: 'Endava (Jan 2020 - Oct 2021)',
         color: "#abcbde",
         neighborhood: 'Area 135',
@@ -59,7 +60,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: -20, y: 36, z: -5 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Experience',
+        type: AcctivityTypes.BUSINESS,
         name: 'Cerner (July 2018 - Jan 2020)',
         color: "#abcbde",
         neighborhood: 'Area 135',
@@ -75,7 +76,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: -15, y: 28, z: 5 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Experience',
+        type: AcctivityTypes.BUSINESS,
         name: 'Siemens (Jan 2017 - Jul 2018)',
         color: "#abcbde",
         neighborhood: 'Area 135',
@@ -93,7 +94,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 15, y: 40, z: -20 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Travel',
+        type: AcctivityTypes.TRAVEL,
         name: 'Urban explorer',
         color: "#b8e0cb",
         neighborhood: 'Area 16',
@@ -110,7 +111,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 15, y: 20, z: -10 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Travel',
+        type: AcctivityTypes.TRAVEL,
         name: 'Discover Romania',
         color: "#b8e0cb",
         neighborhood: 'Area 16',
@@ -128,7 +129,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 10, y: 34, z: 5 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Drawing',
+        type: AcctivityTypes.DRAWING,
         name: 'Exploring Minimalism in Digital Art',
         color: "#ded3e8",
         neighborhood: 'Area 234',
@@ -144,7 +145,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 0, y: 28, z: 10 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Drawing',
+        type: AcctivityTypes.DRAWING,
         name: ' Capturing Moments on My Sketchbook',
         color: "#ded3e8",
         neighborhood: 'Area 234',
@@ -162,7 +163,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: -15, y: 40, z: 20 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Gaming',
+        type: AcctivityTypes.GAMING,
         name: 'Turbo Mode Adventures',
         color: "#d9b3a3",
         neighborhood: 'Area 234',
@@ -177,7 +178,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: -5, y: 24, z: 25 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Gaming',
+        type: AcctivityTypes.GAMING,
         name: 'Chess Journey',
         color: "#d9b3a3",
         neighborhood: 'Area 234',
@@ -192,7 +193,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 5, y: 16, z: 25 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Gaming',
+        type: AcctivityTypes.GAMING,
         name: 'Conquering with Druids, Warriors, and Warlocks',
         color: "#d9b3a3",
         neighborhood: 'Area 234',
@@ -207,7 +208,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 15, y: 16, z: 20 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Gaming',
+        type: AcctivityTypes.GAMING,
         name: 'PlayStation Adventures',
         color: "#d9b3a3",
         neighborhood: 'Area 234',
@@ -223,7 +224,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 5, y: 20, z: 35 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Gaming',
+        type: AcctivityTypes.GAMING,
         name: 'Board Game Gatherings',
         color: "#d9b3a3",
         neighborhood: 'Area 234',
@@ -242,7 +243,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 25, y: 16, z: 5 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Outside',
+        type: AcctivityTypes.OUTDOOR,
         name: '410 Gym Gone ',
         color: "#ded9b4",
         neighborhood: 'Area 24',
@@ -257,7 +258,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 30, y: 28, z: -5 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Outside',
+        type: AcctivityTypes.OUTDOOR,
         name: 'Dive into Progress',
         color: "#ded9b4",
         neighborhood: 'Area 24',
@@ -273,7 +274,7 @@ export const BuildingsDataHardcoded = {
       coordinates: { x: 30, y: 24, z: -15 },
       objectType: ObjectType.BUILDING,
       data: {
-        type: 'Outside',
+        type: AcctivityTypes.OUTDOOR,
         name: 'Exploring on Two Wheels',
         color: "#ded9b4",
         neighborhood: 'Area 24',

@@ -1,0 +1,9 @@
+<div class="nav-container">
+  <div *ngFor="let item of navList" class="svg-nav-icon" [attr.aria-label]="item.value" tooltip-position="right">
+    <img [src]="absoluteAssetsPath + 'svg/' + item.value + '.svg'" title="">
+  </div>
+
+  <div class="svg-nav-icon theme-svg">
+    <img [src]="absoluteAssetsPath + 'svg/dark.svg'" title="">
+  </div>
+</div>
