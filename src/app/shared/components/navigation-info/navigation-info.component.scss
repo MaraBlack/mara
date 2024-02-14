@@ -32,7 +32,7 @@
       color: $heavy-dark-grey;
 
       &:not(:last-child) {
-        border-bottom: 1px solid $primary;
+        border-bottom: 1px solid $primary-yellow;
       }
 
       .description {
@@ -52,7 +52,6 @@
     z-index: 1;
     top: 0;
     left: 0;
-    // background-color: $mid-dark-grey;
     overflow-x: hidden;
     transition: 0.5s;
   }
@@ -60,7 +59,7 @@
   .openbtn {
     font-size: 20px;
     cursor: pointer;
-    background-color: $mid-dark-grey;
+    background-color: #86B86B;
     padding: 10px 15px;
     width: 45px;
     height: 90px;

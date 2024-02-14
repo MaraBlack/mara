@@ -19,6 +19,12 @@
     font-family: "Ubuntu Mono", sans-serif;
     color: $grey;
 
+    &:hover {
+      background: $primary-green;
+      color: $heavy-dark-grey;
+      box-shadow: 0 0 80px rgba($primary-green, 0.5);
+    }
+
     .info-title {
       width: 100%;
       align-items: center;
@@ -30,7 +36,13 @@
     @extend .transparrent-section;
 
     font-size: 28px;
-    color: $dark-grey;
+    color: $grey;
+
+    &:hover {
+      background: $primary-yellow;
+      color: $heavy-dark-grey;
+      box-shadow: 0 0 80px rgba($primary-yellow, 0.5);
+    }
   }
 
   .info-img {
