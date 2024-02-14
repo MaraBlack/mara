@@ -3,10 +3,14 @@ import { enumToMap } from '../../misc/utils';
 import { AcctivityTypes } from '../../models/acctivity-types.mode';
 import { BuildingsDataHardcoded } from '../../data/buildings.data';
 import { BuildingObject } from '../../models/building.model';
+import { RoadsDataHardcoded } from '../../data/roads.data.';
 
 interface NavItem {
-  value: string;
-  isActive: boolean;
+  group: string;
+  items: {
+    name: string;
+    isActive: boolean;
+  }[];
 }
 
 @Component({
@@ -15,7 +19,7 @@ interface NavItem {
   styleUrls: ['./navigation-info.component.scss']
 })
 export class NavigationInfoComponent implements OnInit {
-  navList: { group: string, items: string[] }[] = [];
+  navList: NavItem[] = [];
   toggleNav = false;
   @Output() navItemClicked: EventEmitter<string> = new EventEmitter();
 
@@ -23,48 +27,52 @@ export class NavigationInfoComponent implements OnInit {
 
   constructor() {
     const originalData = BuildingsDataHardcoded;
+    const originalRoads = RoadsDataHardcoded;
 
-    // Object.values(originalData).forEach((element: BuildingObject[]) => {
-    //   element.forEach(child => {
-
-    //   });
-    // });
-
-    for (const key in originalData) {
-      const value = originalData[key];
-      const navObj = {
-        group: key,
-        isActive: false,
-        items: []
-      } as { group: string, items: any[] }
-      value.forEach((child: BuildingObject) => {
-        navObj.items.push(child.data.name)
-      });
-      if (key !== 'empty') {
-        this.navList.push(navObj);
-      }
+    const buildingsObj: NavItem = {
+      group: 'District',
+      items: []
     }
+    const roadsObj: NavItem = {
+      group: 'Roads',
+      items: []
+    }
+    for (const key in originalData) {
+      if (key !== 'empty')
+        buildingsObj.items.push(
+          {
+            name: key,
+            isActive: false
+          }
+        )
+    }
+    for (const key in originalRoads) {
+      roadsObj.items.push(
+        {
+          name: key.split("_")[0] + ' nr ' + key.split("_")[1],
+          isActive: false
+        }
+      )
+    }
+
+    this.navList.push(buildingsObj);
+    this.navList.push(roadsObj);
   }
 
   ngOnInit(): void {
   }
 
-  onNavClick(item: NavItem) {
-    this.setToActive(item);
-    this.navItemClicked.emit(item.value)
-    // select buildings
+  onNavClick(child: any) {
+    this.navList.forEach(nav => {
+      nav.items.forEach(element => {
+        element.isActive = false;
+      });
+    });
+
+    child.isActive = !child.isActive;
   }
 
   onToggleNav() {
     this.toggleNav = !this.toggleNav;
-  }
-
-
-
-  setToActive(item: NavItem) {
-    // this.navList.forEach((item: NavItem) => {
-    //   item.isActive = false;
-    // })
-    // item.isActive = true
   }
 }

@@ -1,8 +1,18 @@
 <div id="canvas-container" #parent>
-    <canvas class="main-canvas" #mainCanvas style="background: #2f3236;" (click)="getObjectInfoFromService()">
+    <canvas 
+        class="main-canvas"
+        #mainCanvas
+        style="background: #2f3236;"
+        (click)="getObjectInfoFromService()">
     </canvas>
-
-    <app-navigation-info id="nav-info-container" (navItemClicked)="navItemClicked($event)"></app-navigation-info>
+    <app-navigation-info
+        id="nav-info-container"
+        (navItemClicked)="navItemClicked($event)">
+    </app-navigation-info>
     <app-object-info id="info-container" [infoPanel]="infoData"></app-object-info>
+</div>
 
+
+<div class="no-mobile">
+    <img src="../../../assets/dang.png">
 </div>

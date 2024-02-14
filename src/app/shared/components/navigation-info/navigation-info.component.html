@@ -1,18 +1,9 @@
 <div class="nav-container">
-  <!-- <div *ngFor="let item of navList" class="svg-nav-icon" [attr.aria-label]="item.value" tooltip-position="right">
-    <img [src]="absoluteAssetsPath + 'svg/' + item.value + '.svg'" title="">
-  </div>
-
-  <div class="svg-nav-icon theme-svg">
-    <img [src]="absoluteAssetsPath + 'svg/dark.svg'" title="">
-  </div> -->
-
   <div id="mySidebar" class="sidebar" [ngClass]="toggleNav ? 'toggleOn' : 'toggleOff'">
     <div *ngFor="let list of navList" class="nav">
         <span class="nav-item"> {{ list.group }}</span>
-        <div *ngFor="let child of list.items" class="sub-nav-item">
-          <div > {{ child[0] }}</div>
-          <div class="description" *ngIf="child[1]">  {{ child[1] }} </div>
+        <div *ngFor="let child of list.items" class="sub-nav-item" [ngClass]="child.isActive ? 'isActive' : ''">
+          <div  (click)="onNavClick(child)"> {{ child.name }}</div>
         </div>
     </div>
   </div>
