@@ -1,14 +1,14 @@
 <div class="nav-container">
   <div id="mySidebar" class="sidebar" [ngClass]="toggleNav ? 'toggleOn' : 'toggleOff'">
     <div *ngFor="let list of navList" class="nav">
-        <span class="nav-item"> {{ list.group }}</span>
-        <div *ngFor="let child of list.items" class="sub-nav-item" [ngClass]="child.isActive ? 'isActive' : ''">
-          <div  (click)="onNavClick(child)"> {{ child.name }}</div>
-        </div>
+      <span class="nav-item"> {{ list.group }}</span>
+      <div *ngFor="let child of list.items" class="sub-nav-item" [ngClass]="child.isActive ? 'isActive' : ''"
+        (click)="onNavClick(child)">
+        <div> {{ child.name }}</div>
+      </div>
     </div>
   </div>
-
-
+  
   <div id="main">
     <button class="openbtn" [ngClass]="toggleNav ? 'btnToggleOn' : 'btnToggleOff'" (click)="onToggleNav()"> +
     </button>

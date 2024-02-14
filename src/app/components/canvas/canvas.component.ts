@@ -18,6 +18,7 @@ import { EventOptions } from "src/app/shared/models/event-options.model";
 import { ObjectType } from "src/app/shared/models/object-types.enum";
 import { IntroHardcoded } from "src/app/shared/data/intro.data";
 import { RoadService } from "src/app/shared/service/objects/road-tile.service";
+import { LinesService } from "src/app/shared/service/engine/lines";
 
 @Component({
   selector: 'app-canvas',
@@ -62,7 +63,7 @@ export class CanvasComponent {
     private infoPanelService: InfoPanelService,
     private cameraService: CameraService,
     private controlsService: ControlsService,
-    private objectHelpersService: ObjectHelpers,
+    private linesService: LinesService,
     private lightService: LightsService,
     private planeService: PlaneService,
     private buildingService: BuildingService
@@ -127,6 +128,7 @@ export class CanvasComponent {
 
     this.addRoadsToPlane();
     this.addBuildingsToPlane();
+    this.addLinesToPlane();
     this.animate();
   }
 
@@ -156,8 +158,13 @@ export class CanvasComponent {
     });
 
     this.buildingService.generatedBuildings = group;
-
     this.scene.add(group);
+  }
+
+  addLinesToPlane() {
+    for (var i = 0; i < 20; i++) {
+      this.scene.add(this.linesService.createLines(6, 80));
+    };
   }
 
   animate() {

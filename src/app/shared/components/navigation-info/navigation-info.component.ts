@@ -1,8 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { enumToMap } from '../../misc/utils';
-import { AcctivityTypes } from '../../models/acctivity-types.mode';
 import { BuildingsDataHardcoded } from '../../data/buildings.data';
-import { BuildingObject } from '../../models/building.model';
 import { RoadsDataHardcoded } from '../../data/roads.data.';
 
 interface NavItem {
@@ -28,35 +25,27 @@ export class NavigationInfoComponent implements OnInit {
   constructor() {
     const originalData = BuildingsDataHardcoded;
     const originalRoads = RoadsDataHardcoded;
-
+    
     const buildingsObj: NavItem = {
       group: 'District',
-      items: []
-    }
+      items: Object.keys(originalData)
+        .filter(key => key !== 'empty')
+        .map(key => ({
+          name: key,
+          isActive: false
+        }))
+    };
+    
     const roadsObj: NavItem = {
       group: 'Roads',
-      items: []
-    }
-    for (const key in originalData) {
-      if (key !== 'empty')
-        buildingsObj.items.push(
-          {
-            name: key,
-            isActive: false
-          }
-        )
-    }
-    for (const key in originalRoads) {
-      roadsObj.items.push(
-        {
-          name: key.split("_")[0] + ' nr ' + key.split("_")[1],
+      items: Object.keys(originalRoads)
+        .map(key => ({
+          name: `${key.split("_")[0]} nr ${key.split("_")[1]}`,
           isActive: false
-        }
-      )
-    }
-
-    this.navList.push(buildingsObj);
-    this.navList.push(roadsObj);
+        }))
+    };
+    
+    this.navList.push(buildingsObj, roadsObj);
   }
 
   ngOnInit(): void {

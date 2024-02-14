@@ -30,3 +30,8 @@ export function enumToMap(enumeration: any): Map<string, string | number> {
 
   return map;
 }
+
+export function mathRandom(num = 8) {
+  var numValue = - Math.random() * num + Math.random() * num;
+  return numValue;
+};

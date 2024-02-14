@@ -31,7 +31,7 @@ export class BuildingService {
   @param options - raycaster, camera and scene, EventOptions interface
   @param wireframe - use MeshStandardMaterial with wireframe true or false
   @return tileObject
-*/
+  */
   addBuilding(properties: BuildingObject, color: THREE.Color = new THREE.Color(), options: EventOptions, wireframe: boolean) {
     const height = properties.coordinates.y ? properties.coordinates.y : 10;
 
