@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
-@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+
 @import "../../../shared/scss/global.scss";
 
 .object-info-container {
@@ -40,7 +39,8 @@
     color: $grey;
 
     &:hover {
-      color: $primary-yellow;
+      background-color: $primary-yellow;
+      color: $heavy-dark-grey;
       box-shadow: 0 0 80px rgba($primary-yellow, 0.5);
     }
   }

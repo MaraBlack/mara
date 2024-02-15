@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, isDevMode  } from '@angular/core';
 import { IntroHardcoded } from '../../data/intro.data';
 
 @Component({
@@ -10,7 +10,7 @@ export class ObjectInfoComponent implements OnChanges {
 
   @Input() infoPanel: any;
 
-  absoluteAssetsPath = '../../../../assets/';
+  absoluteAssetsPath = isDevMode() ? '../../../../assets/' : 'assets/';
   title = IntroHardcoded.name;
   description = IntroHardcoded.description?.text;
   image = '';
@@ -40,5 +40,4 @@ export class ObjectInfoComponent implements OnChanges {
   resize() {
     this.width = 500;
   }
-
 }
