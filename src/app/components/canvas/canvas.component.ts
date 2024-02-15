@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, isDevMode } from '@angular/core';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { CameraService, cameraAnimationTime, cameraCurve, cameraDefaults, enCamAnim } from "../../shared/service/engine/camera";
@@ -28,6 +28,8 @@ import { LinesService } from "src/app/shared/service/engine/lines";
 export class CanvasComponent {
   @ViewChild('mainCanvas', { static: false })
   rendererContainer!: ElementRef;
+
+  img = isDevMode() ? '../../../assets/dang.png' : 'assets/dang.png'
 
   // constants
   roadColor = new THREE.Color(0xf3d17c);
@@ -81,8 +83,8 @@ export class CanvasComponent {
     this.scene.name = ObjectType.SCENE;
     this.scene.receiveShadow = true;
 
-    // var setcolor = 0xd3d5db;
-    // this.scene.fog = new THREE.Fog(setcolor, 100, 250);
+    var setcolor = 0xd3d5db;
+    this.scene.fog = new THREE.Fog(setcolor, 100, 300);
 
     this.camera = this.cameraService.getCamera();
 
@@ -166,7 +168,7 @@ export class CanvasComponent {
 
   addLinesToPlane() {
     for (var i = 0; i < 20; i++) {
-      this.scene.add(this.linesService.createLines(10, 80));
+      this.scene.add(this.linesService.createLines(15, 80));
     };
   }
 

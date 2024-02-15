@@ -12,3 +12,7 @@ Buildings
 Roads
 Flying Cars
 Object click interaction
+
+## version 1.0.1
+
+Simple advertising on buildings

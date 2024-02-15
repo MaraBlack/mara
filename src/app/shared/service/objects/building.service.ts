@@ -1,12 +1,14 @@
 import * as THREE from "three";
 
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { EventOptions } from "../../models/event-options.model";
-import { adjustColor } from "../../misc/utils";
 import { EventsService } from "../engine/events";
 import { BuildingObject } from "../../models/building.model";
 import { ObjectType } from "../../models/object-types.enum";
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { mathRandonIterval } from "../../misc/utils";
+import { AdvertisingService } from "./advertising.service";
+import { OrientationEnum } from "../../models/orientation.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,10 @@ export class BuildingService {
     return this._generatedBuildings;
   }
 
-  constructor(private eventsService: EventsService) { }
+  constructor(
+    private eventsService: EventsService,
+    private advertisingService: AdvertisingService
+  ) { }
 
   /*
   @param properties - uuid, coordinates and data, BuildingObject interface
@@ -47,6 +52,25 @@ export class BuildingService {
     buildingObject.castShadow = true;
     buildingObject.receiveShadow = true;
     buildingObject.name = ObjectType.BUILDING + '_object_from_' + properties.data.type
+
+    const random = height > 20 ? mathRandonIterval(6, 10) : mathRandonIterval(2, 6)
+
+    if (Math.random() < 0.4) {
+      buildingObject.add(this.advertisingService.addPanels(height, random, OrientationEnum.E));
+    }
+
+    if (Math.random() < 0.4) {
+      buildingObject.add(this.advertisingService.addPanels(height, random, OrientationEnum.S));
+    }
+
+    if (Math.random() < 0.4) {
+      buildingObject.add(this.advertisingService.addPanels(height, random, OrientationEnum.V));
+    }
+
+    if (Math.random() < 0.4) {
+      buildingObject.add(this.advertisingService.addPanels(height, random, OrientationEnum.N));
+    }
+
 
     const group = new THREE.Group();
     group.name = ObjectType.BUILDING + '_group'

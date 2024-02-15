@@ -35,3 +35,7 @@ export function mathRandom(num = 8) {
   var numValue = - Math.random() * num + Math.random() * num;
   return numValue;
 };
+
+export function mathRandonIterval(min = 1, max = 100) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
