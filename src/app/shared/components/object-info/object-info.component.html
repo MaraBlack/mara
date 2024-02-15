@@ -8,7 +8,7 @@
   <div *ngIf="expandColapseState" class="description">
     <span> {{ description }}</span>
   </div>
-  <div *ngIf="image !== ''">
+  <div *ngIf="image !== '' && expandColapseState">
     <div class="info-img">
       <img [src]="image" height="350">
     </div>

@@ -18,6 +18,7 @@
     justify-content: space-between;
     font-family: "Ubuntu Mono", sans-serif;
     color: $grey;
+    border-right: 8px solid $primary-green;
 
     &:hover {
       background: $primary-green;
@@ -39,8 +40,7 @@
     color: $grey;
 
     &:hover {
-      background: $primary-yellow;
-      color: $heavy-dark-grey;
+      color: $primary-yellow;
       box-shadow: 0 0 80px rgba($primary-yellow, 0.5);
     }
   }

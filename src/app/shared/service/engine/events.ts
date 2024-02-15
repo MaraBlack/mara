@@ -90,7 +90,7 @@ export class EventsService {
 
     object.material = new THREE.MeshStandardMaterial({
       toneMapped: false,
-      emissive: '#faec91',
+      emissive: color,
       emissiveIntensity: 0.6
     })
   }

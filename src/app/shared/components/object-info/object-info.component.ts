@@ -15,7 +15,7 @@ export class ObjectInfoComponent implements OnChanges {
   description = IntroHardcoded.description?.text;
   image = '';
   expandColapseSvg = this.absoluteAssetsPath + 'svg/arrow-up.svg';
-  expandColapseState = true;
+  expandColapseState = false;
 
   width = 330;
 

@@ -10,7 +10,7 @@ export class LightsService {
     @param color - default is 0xf5f4eb
     @return PointLight
   */
-  getPointLight(color: THREE.ColorRepresentation = new THREE.Color(0xebf7eb)) {
+  getPointLight(color: THREE.ColorRepresentation = new THREE.Color(0xffffff)) {
     const light = new THREE.PointLight(color, 1000, 500, 2);
     light.position.set(0, 60, 0);
     light.castShadow = true;

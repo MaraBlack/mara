@@ -81,6 +81,9 @@ export class CanvasComponent {
     this.scene.name = ObjectType.SCENE;
     this.scene.receiveShadow = true;
 
+    // var setcolor = 0xd3d5db;
+    // this.scene.fog = new THREE.Fog(setcolor, 100, 250);
+
     this.camera = this.cameraService.getCamera();
 
     this.pointLight = this.lightService.getPointLight();
@@ -163,7 +166,7 @@ export class CanvasComponent {
 
   addLinesToPlane() {
     for (var i = 0; i < 20; i++) {
-      this.scene.add(this.linesService.createLines(6, 80));
+      this.scene.add(this.linesService.createLines(10, 80));
     };
   }
 

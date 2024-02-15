@@ -6,44 +6,47 @@ import { TweenMax } from "gsap";
 
 @Injectable({
   providedIn: 'root'
-}) export class LinesService {
-
+})
+export class LinesService {
   createCarPos = false;
 
-  createLines(cScale = 2, cPos = 20, cColor = 0xf3d17c) {
-    var cMat = new THREE.MeshToonMaterial({
-      color: cColor,
+  /*
+    @param scale - how big the line should be
+    @param position - where to place it
+    @param color - default color is 0x86B86B
+  */
+  createLines(scale = 2, position = 20, color = 0x86B86B) {
+    const cMat = new THREE.MeshToonMaterial({
+      color: color,
       side: THREE.DoubleSide,
-      emissive: '#f3d17c',
-      emissiveIntensity: 0.6
+      emissive: '#86B86B',
+      emissiveIntensity: 1
     });
-    var cGeo = new THREE.BoxGeometry(1, cScale / 40, cScale / 40);
-    var cElem = new THREE.Mesh(cGeo, cMat);
-    var cAmp = 8;
+    var boxGeo = new THREE.BoxGeometry(1, scale / 40, scale / 40);
+    var line = new THREE.Mesh(boxGeo, cMat);
+    var aplifier = 8;
 
     if (this.createCarPos) {
       this.createCarPos = false;
-      cElem.position.x = -cPos;
-      cElem.position.y = 40;
+      line.position.x = -position;
+      line.position.y = 40;
 
-      cElem.position.z = (mathRandom(cAmp));
+      line.position.z = (mathRandom(aplifier));
 
-      TweenMax.to(cElem.position, 3, { x: cPos, repeat: -1, yoyo: true, delay: mathRandom(cAmp * 2) });
+      TweenMax.to(line.position, 3, { x: position, repeat: -1, yoyo: true, delay: mathRandom(aplifier * 2) });
     } else {
       this.createCarPos = true;
-      cElem.position.x = (mathRandom(cAmp));
-      cElem.position.z = -cPos;
-      cElem.position.y = 30;
+      line.position.x = (mathRandom(aplifier));
+      line.position.z = -position;
+      line.position.y = 30;
 
-      cElem.rotation.y = 90 * Math.PI / 180;
+      line.rotation.y = 90 * Math.PI / 180;
 
-      TweenMax.to(cElem.position, 3, { z: cPos, repeat: -1, yoyo: true, delay: mathRandom(cAmp * 2) });
+      TweenMax.to(line.position, 3, { z: position, repeat: -1, yoyo: true, delay: mathRandom(aplifier * 2) });
     };
-    cElem.receiveShadow = true;
-    cElem.castShadow = true;
+    line.receiveShadow = true;
+    line.castShadow = true;
 
-    return cElem;
+    return line;
   };
-
-
 }
