@@ -1,17 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
-@import url("https://fonts.googleapis.com/css?family=Ubuntu");
 @import "../../../shared/scss/global.scss";
 
 .nav-container {
   display: flex;
   flex-direction: column;
   height: 100%;
-
   .nav {
     padding: 2% 0;
     margin: 2% 0;
     border-radius: 12px;
-
     .nav-item {
       font-size: 36px;
       justify-content: space-between;
@@ -22,7 +18,6 @@
       width: 100%;
       border-radius: 12px;
     }
-
     .sub-nav-item {
       cursor: pointer;
       display: flex;
@@ -32,7 +27,6 @@
       border-top-left-radius: 12px;
       border-bottom-left-radius: 12px;
       color: $dark-grey;
-
       &:hover {
         border-left: 4px solid $primary-green;
         border-top: 4px solid $primary-green;
@@ -40,40 +34,18 @@
         color: $heavy-dark-grey;
       }
     }
-
     .isActive {
       background-color: $primary-green;
       box-shadow: 0 0 80px rgba($primary-green, 0.5);
       color: $heavy-dark-grey;
     }
   }
-
-  .sidebar {
-    background-color: $mid-dark-grey;
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    transition: 0.5s;
-    border-right: 5px solid $primary-green;
+  
+  .sidebar{
+    @extend .sidebar-nav;
   }
-
   .openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: $primary-green;
-    padding: 10px 15px;
-    width: 45px;
-    height: 90px;
-    border: none;
-    border-radius: 0 10rem 10rem 0;
-  }
-
-  .openbtn:hover {
-    box-shadow: 0 0 80px rgba($primary-green, 0.7);
+    @extend .openbtn-nav;
   }
 
   #main {
@@ -81,73 +53,49 @@
     align-items: center;
     height: 100%;
   }
-
   .toggleOn {
     width: 300px;
   }
-
   .toggleOff {
     width: 0;
     margin-left: 0;
   }
-
   .btnToggleOn {
     transition: margin-left .5s;
     margin-left: 300px;
   }
-
   .btnToggleOff {
     transition: margin-left .5s;
     margin-left: 0;
   }
 }
-
-
 @media screen and (max-width: 1280px) {
   .nav-container {
     .nav {
       padding: 2% 0;
       margin: 2% 0;
       border-radius: 12px;
-
       .nav-item {
         font-size: 28px;
       }
-
       .sub-nav-item {
         font-size: 24px;
       }
     }
-
     .toggleOn {
       width: 200px;
     }
-
     .btnToggleOn {
       transition: margin-left .5s;
       margin-left: 200px;
     }
   }
 }
-
 /* overwrite scroll css */
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
+::-webkit-scrollbar { width: 5px; }
 /* Track */
-::-webkit-scrollbar-track {
-  background: $mid-dark-grey
-}
-
+::-webkit-scrollbar-track { background: $mid-dark-grey }
 /* Handle */
-::-webkit-scrollbar-thumb {
-  background: $primary-green;
-  border-radius: 24px;
-}
-
+::-webkit-scrollbar-thumb { background: $primary-green; border-radius: 24px; }
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: $heavy-dark-grey;
-}
+::-webkit-scrollbar-thumb:hover { background: $heavy-dark-grey; }

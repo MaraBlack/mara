@@ -1,4 +1,5 @@
-@import "./tooltip.scss";
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
 
 $transparrency: .5;
 
@@ -26,7 +27,6 @@ $heavy-dark-grey-tr: rgba($heavy-dark-grey, $transparrency);
   border-radius: 12px;
 }
 
-
 .transparrent-section {
   padding: 4%;
   margin-top: 2%;
@@ -44,4 +44,32 @@ $heavy-dark-grey-tr: rgba($heavy-dark-grey, $transparrency);
     rgba(152, 145, 129, 0.71) 50%,
     rgba(0, 255, 255, 0) 100%
   );
+}
+
+.sidebar-nav {
+  background-color: $mid-dark-grey;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  border-right: 5px solid $primary-green;
+}
+.openbtn-nav {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: $primary-green;
+  padding: 10px 15px;
+  width: 45px;
+  height: 90px;
+  border: none;
+  border-radius: 0 10rem 10rem 0;
+
+  &:hover {
+  box-shadow: 0 0 80px rgba($primary-green, 0.7);
+
+  }
 }
