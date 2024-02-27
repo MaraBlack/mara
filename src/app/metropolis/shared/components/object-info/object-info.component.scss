@@ -1,0 +1,88 @@
+
+@import "../../../shared/scss/global.scss";
+
+.object-info-container {
+  // @extend .transparent-container;
+  width: 516px;
+  margin: 4px 0;
+  padding: 2%;
+  color: $heavy-dark-grey;
+  align-items: center;
+
+  .title {
+    @extend .transparrent-section;
+
+    display: flex;
+    font-size: 36px;
+    justify-content: space-between;
+    font-family: "Ubuntu Mono", sans-serif;
+    color: $grey;
+    border-right: 8px solid $primary-green;
+
+    &:hover {
+      background: $primary-green;
+      color: $heavy-dark-grey;
+      box-shadow: 0 0 80px rgba($primary-green, 0.5);
+    }
+
+    .info-title {
+      width: 100%;
+      align-items: center;
+      display: grid;
+    }
+  }
+
+  .description {
+    @extend .transparrent-section;
+
+    font-size: 28px;
+    color: $grey;
+
+    &:hover {
+      background-color: $primary-yellow;
+      color: $heavy-dark-grey;
+      box-shadow: 0 0 80px rgba($primary-yellow, 0.5);
+    }
+  }
+
+  .info-img {
+    @extend .transparrent-section;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      transform: scale(3);
+      transform-origin: 50% 50%;
+    }
+
+    height: 350px;
+    overflow: hidden;
+  }
+}
+
+span {
+  position: relative;
+  z-index: 10000;
+}
+
+.svg-icon {
+  width: 92px;
+  margin-left: 4%;
+  align-items: center;
+  display: inline-grid;
+}
+
+@media screen and (max-width: 1280px) {
+  .object-info-container{
+    width: 316px;
+
+    .title {
+      font-size: 28px;
+    }
+    
+    .description {
+      font-size: 24px;
+    }
+  }
+}
