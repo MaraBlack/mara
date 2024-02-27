@@ -22,10 +22,6 @@ export class ControlsService {
     controls.autoRotate = false;
     controls.enablePan = true;
 
-    // rotate 360 degree
-    controls.minPolarAngle = 0.0 * Math.PI;
-    controls.maxPolarAngle = 0.5 * Math.PI;
-
     return controls;
   }
 }

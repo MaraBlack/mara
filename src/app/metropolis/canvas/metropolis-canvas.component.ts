@@ -19,6 +19,7 @@ import { ObjectType } from "src/app/metropolis/shared/models/object-types.enum";
 import { IntroHardcoded } from "src/app/metropolis/shared/data/intro.data";
 import { RoadService } from "src/app/metropolis/shared/objects/road-tile.service";
 import { LinesService } from "src/app/engine/lines";
+import { SceneActionService } from "src/app/engine/scene-actions";
 
 @Component({
   selector: 'app-metropolis-canvas',
@@ -26,7 +27,7 @@ import { LinesService } from "src/app/engine/lines";
   styleUrls: ['./metropolis-canvas.component.scss']
 })
 export class CanvasComponent {
-  @ViewChild('mainCanvas', { static: false })
+  @ViewChild('metropolisCanvas', { static: false })
   rendererContainer!: ElementRef;
 
   img = isDevMode() ? '../../../assets/dang.png' : 'assets/dang.png'
@@ -68,7 +69,8 @@ export class CanvasComponent {
     private linesService: LinesService,
     private lightService: LightsService,
     private planeService: PlaneService,
-    private buildingService: BuildingService
+    private buildingService: BuildingService,
+    private sceneActionService: SceneActionService
   ) {
     this.initGL();
   }
@@ -118,7 +120,7 @@ export class CanvasComponent {
   }
 
   ngAfterViewInit() {
-    const element = document.getElementById('canvas-container');
+    const element = document.getElementById('metropolis-canvas-container');
     const height = element?.offsetHeight || window.innerHeight;
     const width = element?.offsetWidth || window.innerWidth;
 
@@ -128,6 +130,9 @@ export class CanvasComponent {
     (this.renderer as THREE.WebGLRenderer).shadowMap.enabled = true;
 
     this.controls = this.controlsService.getControls(this.camera, this.renderer.domElement);
+    // rotate 360 degree
+    this.controls.minPolarAngle = 0.0 * Math.PI;
+    this.controls.maxPolarAngle = 0.5 * Math.PI;
 
     window.addEventListener("resize", this.onWindowResize, false);
 
@@ -173,27 +178,10 @@ export class CanvasComponent {
   }
 
   animate() {
-    let camPosIndex = 0;
-    if (this.renderer) {
-      window.requestAnimationFrame(() => this.animate());
-      this.controls.update();
-
-      //#region CAM animation
-      if (enCamAnim && camPosIndex != null && camPosIndex++ < cameraAnimationTime) {
-        // ease fn
-        const camPos = cameraCurve.getPoint(1 - (1 - camPosIndex / cameraAnimationTime) ** 2);
-        this.camera.position.set(camPos.x, camPos.y, camPos.z);
-        this.camera.lookAt(cameraDefaults.posCameraTarget);
-      }
-
-      this.renderer.render(this.scene, this.camera);
-    }
+    this.sceneActionService.animate(this.renderer, this.controls, this.scene, this.camera)
   }
 
   onWindowResize() {
-    this.camera.aspect = window.innerWidth / window.innerHeight;
-    this.camera.updateProjectionMatrix();
-
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.sceneActionService.onWindowResize(this.renderer, this.camera)
   }
 }

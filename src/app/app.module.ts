@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CanvasComponent } from './metropolis/canvas/metropolis-canvas.component';
 import { ObjectInfoComponent } from './metropolis/shared/components/object-info/object-info.component';
 import { NavigationInfoComponent } from './metropolis/shared/components/navigation-info/navigation-info.component';
+import { LogoCanvasComponent } from './landing-page/canvas/logo-canvas/logo-canvas.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { NavigationInfoComponent } from './metropolis/shared/components/navigati
     CanvasComponent,
     ObjectInfoComponent,
     NavigationInfoComponent,
+    LogoCanvasComponent,
   ],
   imports: [
     BrowserModule,

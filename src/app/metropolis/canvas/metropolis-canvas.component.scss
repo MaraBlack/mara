@@ -1,4 +1,4 @@
-#canvas-container {
+#metropolis-canvas-container {
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  #canvas-container {
+  #metropolis-canvas-container {
     display: none;
   }
 
