@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { CanvasComponent } from './metropolis/canvas/metropolis-canvas.component';
 import { ObjectInfoComponent } from './metropolis/shared/components/object-info/object-info.component';
 import { NavigationInfoComponent } from './metropolis/shared/components/navigation-info/navigation-info.component';
-import { LogoCanvasComponent } from './landing-page/canvas/logo-canvas/logo-canvas.component';
+import { LogoCanvasComponent } from './landing-page/canvas/logo-canvas.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LogoCanvasComponent } from './landing-page/canvas/logo-canvas/logo-canv
     LogoCanvasComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule
   ],

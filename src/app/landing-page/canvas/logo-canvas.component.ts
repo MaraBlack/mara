@@ -10,6 +10,7 @@ import { ObjectHelpers } from "src/app/engine/grid-helper";
 import { EventOptions } from "src/app/metropolis/shared/models/event-options.model";
 import { ControlsService } from "src/app/engine/controls";
 import { SceneActionService } from "src/app/engine/scene-actions";
+import { LettersService } from "../shared/letters.service";
 
 @Component({
   selector: 'app-logo-canvas',
@@ -51,7 +52,8 @@ export class LogoCanvasComponent {
     private planeService: PlaneService,
     private controlsService: ControlsService,
     private objectHelpersService: ObjectHelpers,
-    private sceneActionService: SceneActionService
+    private sceneActionService: SceneActionService,
+    private lettersService: LettersService
 
   ) {
     this.initGL();
@@ -61,9 +63,6 @@ export class LogoCanvasComponent {
     this.scene = new THREE.Scene();
     this.scene.name = ObjectType.SCENE;
     this.scene.receiveShadow = true;
-
-    var setcolor = 0xd3d5db;
-    this.scene.fog = new THREE.Fog(setcolor, 100, 300);
 
     this.camera = this.cameraService.getCamera();
 
@@ -95,16 +94,18 @@ export class LogoCanvasComponent {
     const height = element?.offsetHeight || window.innerHeight;
     const width = element?.offsetWidth || window.innerWidth;
 
-
     this.renderer = new THREE.WebGLRenderer({ canvas: this.rendererContainer.nativeElement, antialias: true, alpha: true });
-    this.renderer.setSize(width / 2, height/1.5, true);
+    this.renderer.setSize(width, height, true);
     (this.renderer as THREE.WebGLRenderer).shadowMap.enabled = true;
 
     this.controls = this.controlsService.getControls(this.camera, this.renderer.domElement);
 
     // window.addEventListener("resize", this.onWindowResize, false);
 
+    const coord = { x: 10, y: 10, z: 0}
+    const test = this.lettersService.getLetter_M(coord, 5, 6);
 
+    this.scene.add(test)
     this.animate();
   }
 
