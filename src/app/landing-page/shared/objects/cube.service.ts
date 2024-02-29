@@ -9,7 +9,7 @@ import { PlaneCoordinates } from "src/app/metropolis/shared/models/plane-coordin
 })
 export class CubeService {
 
-  segments = 2;
+  segments = 3;
   constructor(
   ) { }
 
@@ -21,14 +21,16 @@ export class CubeService {
   */
   addCube(coordinates: PlaneCoordinates, color?: THREE.Color, wireframe?: boolean, segments?: number) {
     const localSegments = segments || this.segments;
-    const building = new RoundedBoxGeometry(localSegments, localSegments, localSegments, 1, 0);
+    const cubeGeom = new RoundedBoxGeometry(localSegments, localSegments, localSegments + 1, 1, 0);
+
+    // const sphereGeom = new THREE.SphereGeometry(localSegments / 2, 64, 32); 
 
     const material = new THREE.MeshPhongMaterial({
-      color: color || [0xd3d5db, 0xffffff, 0x9fa3ab, 0xcfd0d1][Math.random() * 4 | 0],
+      color: color || [0xd3d5db, 0xffffff, 0x9fa3ab, 0xcfd0d1, 0xfcba03][Math.random() * 5 | 0],
       wireframe: wireframe ? true : false
     });
 
-    const cube = new THREE.Mesh(building, material);
+    const cube = new THREE.Mesh(cubeGeom, material);
     cube.position.set(coordinates.x, coordinates.y || 0, coordinates.z);
     cube.castShadow = true;
     cube.receiveShadow = true;
@@ -37,14 +39,57 @@ export class CubeService {
     return cube;
   }
 
-  addCubbesInARow(coordinates: PlaneCoordinates, noOfCubes: number, segments?: number) {
+  addCubbesVerticalRow(coordinates: PlaneCoordinates, noOfCubes: number, startingPoint: PlaneCoordinates, segments?: number) {
+    const localSegments = segments || this.segments;
+    const localY = coordinates.y || 0;
+    const group = new THREE.Group();
+    group.name = 'verical_group'
+
+    for (let index = 0; index < noOfCubes; index++) {
+      const localCoordinates = {
+        x: startingPoint.x * localSegments,
+        y: ((startingPoint.y || 0) * localSegments) + (index * localSegments),
+        z: 0
+      }
+      const cube = this.addCube(localCoordinates)
+      group.add(cube);
+    }
+
+    group.position.set(coordinates.x, localY, coordinates.z);
+
+    return group;
+  }
+
+  // addCubbesRightVerticalRow(coordinates: PlaneCoordinates, noOfCubes: number, segments?: number) {
+  //   const localSegments = segments || this.segments;
+  //   const localY = coordinates.y || 0;
+  //   const group = new THREE.Group();
+  //   group.name = 'verical_group';
+
+  //   for (let index = 0; index < noOfCubes; index++) {
+  //     const localCoordinates = {
+  //       x: (noOfCubes * localSegments) - localSegments, y: index * localSegments, z: 0
+  //     }
+
+  //     const cube = this.addCube(localCoordinates)
+  //     group.add(cube);
+  //   }
+
+  //   group.position.set(coordinates.x, localY, coordinates.z);
+
+  //   return group;
+  // }
+
+  addCubbesBottomAHorizontalRow(coordinates: PlaneCoordinates, noOfCubes: number, startingPoint: number, segments?: number) {
     const localSegments = segments || this.segments;
     const group = new THREE.Group();
     group.name = 'verical_group'
 
     for (let index = 0; index < noOfCubes; index++) {
       const localCoordinates = {
-        x: coordinates.x, y: (index * localSegments), z: coordinates.z
+        x: localSegments + (index * localSegments),
+        y: (startingPoint * localSegments),
+        z: coordinates.z
       }
       const cube = this.addCube(localCoordinates)
       group.add(cube);
@@ -55,14 +100,17 @@ export class CubeService {
     return group;
   }
 
-  addDiagonalLeftToRight(coordinates: PlaneCoordinates, startingPoint: number, noOfCubes: number, segments?: number) {
+  addDiagonalLRTB(coordinates: PlaneCoordinates, startingPoint: PlaneCoordinates, noOfCubes: number, segments?: number) {
     const localSegments = segments || this.segments;
+    const localY = coordinates.y || 0;
     const group = new THREE.Group();
     group.name = 'diagonal_left-right-group'
 
     for (let index = 0; index < noOfCubes; index++) {
       const localCoordinates = {
-        x: localSegments + coordinates.x + (index * localSegments), y: (startingPoint * localSegments) - (index * localSegments), z: coordinates.z
+        x: (startingPoint.x * localSegments) + localSegments + (index * localSegments),
+        y: ((startingPoint.y || 0 * localSegments) * localSegments) - (index * localSegments),
+        z: startingPoint.z
       }
       const cube = this.addCube(localCoordinates)
       group.add(cube);
@@ -73,20 +121,67 @@ export class CubeService {
     return group;
   }
 
-  addDiagonalRightToLeft(coordinates: PlaneCoordinates, startingPoint: number, noOfCubes: number, segments?: number) {
+  addDiagonalLRBT(coordinates: PlaneCoordinates, startingPoint: PlaneCoordinates, noOfCubes: number, segments?: number) {
     const localSegments = segments || this.segments;
-    const group = new THREE.Group();
-    group.name = 'diagonal_right-left-group'
+    const localY = coordinates.y || 0;
+    const cubes = noOfCubes % 2 === 0 ? noOfCubes : (noOfCubes - 1)
+    const startingX = (noOfCubes * localSegments) + (cubes * localSegments);
 
-    for (let index = noOfCubes - 1; index >= 0; index--) {
+    const group = new THREE.Group();
+    group.name = 'diagonal_right-left-group';
+
+    for (let index = 0; index < noOfCubes; index++) {
       const localCoordinates = {
-        x: coordinates.x - (index * localSegments) - localSegments, y: (startingPoint * localSegments) - (index * localSegments), z: coordinates.z
+        x: (startingPoint.x * localSegments) - (index * localSegments),
+        y: ((startingPoint.y || 0) * localSegments) - (index * localSegments),
+        z: startingPoint.z
       }
       const cube = this.addCube(localCoordinates)
       group.add(cube);
     }
 
-    group.position.set(coordinates.x, coordinates.y || 0, coordinates.z);
+    group.position.set(coordinates.x, localY, coordinates.z);
+
+    return group;
+  }
+
+  addDot(coordinates: PlaneCoordinates, startingPoint: PlaneCoordinates, noOfCubes: number, segments?: number) {
+    const localSegments = segments || this.segments;
+    const localY = coordinates.y || 0;
+
+    const group = new THREE.Group();
+    group.name = noOfCubes + 'R_group';
+
+    const cubeLT = this.addCube({
+        x: startingPoint.x * localSegments,
+        y: (startingPoint.y || 0) * localSegments,
+        z: startingPoint.z
+    });
+
+    const cubeRT = this.addCube({
+        x: (startingPoint.x * localSegments) + localSegments,
+        y: (startingPoint.y || 0) * localSegments,
+        z: startingPoint.z
+    });
+
+    const cubeLB = this.addCube({
+        x: (startingPoint.x * localSegments ),
+        y: (startingPoint.y || 0) * localSegments - localSegments,
+        z: startingPoint.z
+    });
+
+    const cubeRB = this.addCube({
+        x: (startingPoint.x * localSegments ) + localSegments,
+        y: (startingPoint.y || 0) * localSegments - localSegments,
+        z: startingPoint.z
+    });
+
+    group.add(cubeLT);
+    group.add(cubeRT);
+    group.add(cubeLB);
+    group.add(cubeRB);
+
+    group.position.set(coordinates.x, localY, coordinates.z);
 
     return group;
   }

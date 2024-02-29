@@ -14,28 +14,193 @@ export class LettersService {
 
   }
 
-  getLetter_M(coordinates: PlaneCoordinates, height: number, segments: number) {
-    const coords = { x: coordinates.x + height - 1, y: coordinates.y, z: coordinates.z }
-
+  getLetter_A(coordinates: PlaneCoordinates, noOfCubes: number) {
     const group = new THREE.Group();
-    group.name = height + '_group'
-    const cubesInARowLeft = this.cubeService.addCubbesInARow(coordinates, height);
+    group.name = noOfCubes + 'A_group';
+    const upperMid = this.findMiddlePositions(noOfCubes).upperMid;
 
-    const upperMid = this.findMiddlePositions(height).upperMid;
-    const lowerMid = this.findMiddlePositions(height).lowerMid;
+    const cubesInARowLeft = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: 0, z: 0 });
+    const cubesInARowRight = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: noOfCubes - 1, z: 0 });
 
-    const diagonalLeftRight = this.cubeService.addDiagonalLeftToRight(coordinates, height - 1, upperMid);
-    const diagonelRightLeft = this.cubeService.addDiagonalRightToLeft(coords, height - 1, lowerMid)
+    const topLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, noOfCubes - 1);
+    const midLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, upperMid);
 
-    const cubesInARowRight = this.cubeService.addCubbesInARow(coords, height);
+    group.add(cubesInARowLeft);
+    group.add(cubesInARowRight);
+    group.add(topLine);
+    group.add(midLine);
+
+    return group;
+  }
+
+  getLetter_B(coordinates: PlaneCoordinates, noOfCubes: number) {
+    const group = new THREE.Group();
+    group.name = noOfCubes + 'B_group';
+
+    const upperMid = this.findMiddlePositions(noOfCubes).upperMid;
+    const lowerMid = this.findMiddlePositions(noOfCubes).lowerMid;
+
+    const cubesInARowLeft = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: 0, z: 0 });
+    const topLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, noOfCubes - 1);
+    const midLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, upperMid);
+    const botLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, 0);
+
+    const upperB = this.cubeService.addCubbesVerticalRow(coordinates, (noOfCubes - 3) / 2, { x: noOfCubes - 1, y: noOfCubes - lowerMid, z: 0 });
+    const lowerB = this.cubeService.addCubbesVerticalRow(coordinates, (noOfCubes - 3) / 2, { x: noOfCubes - 1, y: 1, z: 0 });
+
+    group.add(cubesInARowLeft);
+    group.add(topLine);
+    group.add(midLine);
+    group.add(botLine);
+
+    group.add(upperB);
+    group.add(lowerB);
+
+    return group;
+  }
+
+  getLetter_C(coordinates: PlaneCoordinates, noOfCubes: number) {
+    const group = new THREE.Group();
+    group.name = noOfCubes + 'C_group';
+
+    const lowerMid = this.findMiddlePositions(noOfCubes).lowerMid;
+
+    const cubesInARowLeft = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: 0, z: 0 });
+    const topLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, noOfCubes - 1);
+    const botLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, 0);
+
+    const noOfCubesForRight = Math.floor((noOfCubes - 2) / 3);
+    const upperC = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubesForRight, { x: noOfCubes - 1, y: noOfCubes - noOfCubesForRight - 1, z: 0 });
+    const lowerC = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubesForRight, { x: noOfCubes - 1, y: 1, z: 0 });
+
+    group.add(cubesInARowLeft);
+    group.add(topLine);
+    group.add(botLine);
+    group.add(upperC);
+    group.add(lowerC);
+
+    return group;
+  }
+
+  getLetter_E(coordinates: PlaneCoordinates, noOfCubes: number) {
+    const group = new THREE.Group();
+    group.name = noOfCubes + 'E_group';
+
+    const upperMid = this.findMiddlePositions(noOfCubes).upperMid;
+
+    const cubesInARowLeft = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: 0, z: 0 });
+    const topLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 1, noOfCubes - 1);
+    const midLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 1, upperMid);
+    const botLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 1, 0);
+
+    group.add(cubesInARowLeft);
+    group.add(topLine);
+    group.add(midLine);
+    group.add(botLine);
+
+    return group;
+  }
+
+  getLetter_F(coordinates: PlaneCoordinates, noOfCubes: number) {
+    const group = new THREE.Group();
+    group.name = noOfCubes + 'F_group';
+
+    const upperMid = this.findMiddlePositions(noOfCubes).upperMid;
+
+    const cubesInARowLeft = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: 0, z: 0 });
+    const topLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 1, noOfCubes - 1);
+    const midLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, upperMid);
+
+    group.add(cubesInARowLeft);
+    group.add(topLine);
+    group.add(midLine);
+
+    return group;
+  }
+
+  getLetter_K(coordinates: PlaneCoordinates, noOfCubes: number) {
+    const group = new THREE.Group();
+    group.name = noOfCubes + 'K_group';
+
+    const upperMid = this.findMiddlePositions(noOfCubes).upperMid;
+
+    const half = Math.floor(noOfCubes / 2);
+    const cubesInARowLeft = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: 0, z: 0 });
+    const midLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, upperMid - 1, upperMid);
+
+    const upperK = this.cubeService.addDiagonalLRBT(coordinates, { x: noOfCubes - 1, y: noOfCubes - 1, z: 0 }, upperMid);
+    const lowerK = this.cubeService.addDiagonalLRTB(coordinates, { x: upperMid - 1, y: noOfCubes - upperMid - 1, z: 0 }, noOfCubes - upperMid);
+
+    group.add(cubesInARowLeft);
+    group.add(midLine);
+    group.add(upperK)
+    group.add(lowerK)
+
+    return group;
+  }
+
+  getLetter_L(coordinates: PlaneCoordinates, noOfCubes: number) {
+    const group = new THREE.Group();
+    group.name = noOfCubes + 'L_group';
+
+    const cubesInARowLeft = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: 0, z: 0 });
+    const botLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 1, 0);
+
+    group.add(cubesInARowLeft);
+    group.add(botLine);
+
+    return group;
+  }
+
+  getLetter_M(coordinates: PlaneCoordinates, noOfCubes: number) {
+    const group = new THREE.Group();
+    group.name = noOfCubes + 'M_group';
+
+    const cubesInARowLeft = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: 0, z: 0 });
+    const cubesInARowRight = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: noOfCubes - 1, z: 0 });
+
+    const upperMid = this.findMiddlePositions(noOfCubes).upperMid;
+    const lowerMid = this.findMiddlePositions(noOfCubes).lowerMid;
+
+    const diagonalLeftRight = this.cubeService.addDiagonalLRTB(coordinates, { x: 0, y: noOfCubes - 1, z: 0 }, upperMid);
+    const diagonalRightLeft = this.cubeService.addDiagonalLRBT(coordinates, { x: noOfCubes -2, y: noOfCubes - 1, z: 0 }, upperMid);
 
     group.add(cubesInARowLeft);
     group.add(diagonalLeftRight);
-    group.add(diagonelRightLeft);
+    group.add(diagonalRightLeft);
     group.add(cubesInARowRight);
 
     return group;
+  }
 
+  getLetter_R(coordinates: PlaneCoordinates, noOfCubes: number) {
+    const group = new THREE.Group();
+    group.name = noOfCubes + 'R_group';
+
+    const upperMid = this.findMiddlePositions(noOfCubes).upperMid;
+    const lowerMid = this.findMiddlePositions(noOfCubes).lowerMid;
+
+    const cubesInARowLeft = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubes, { x: 0, z: 0 });
+    const topLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, noOfCubes - 1);
+    const midLine = this.cubeService.addCubbesBottomAHorizontalRow(coordinates, noOfCubes - 2, upperMid);
+
+    const noOfCubesForRight = Math.floor((noOfCubes - 2) / 2);
+    const upperR = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubesForRight, { x: noOfCubes - 1, y: noOfCubes - noOfCubesForRight - 1, z: 0 });
+    const lowerR = this.cubeService.addCubbesVerticalRow(coordinates, lowerMid, { x: upperMid + 1, y: 0, z: 0 });
+
+    group.add(cubesInARowLeft);
+    group.add(topLine);
+    group.add(midLine);
+    group.add(upperR);
+    group.add(lowerR);
+
+    return group;
+  }
+
+  getLetter_Dot(coordinates: PlaneCoordinates, noOfCubes: number) {
+    const half = noOfCubes / 2;
+    const coords = {x: half, y: half, z:0}
+    return this.cubeService.addDot(coordinates, coords, noOfCubes);
   }
 
   private findMiddlePositions(number: number) {
@@ -46,8 +211,13 @@ export class LettersService {
     // Ensure the number is positive
     local = Math.max(0, local);
 
-    upperMiddle = Math.floor(number / 2);
-    lowerMiddle = Math.floor(number / 2)
+    if (local % 2 === 0) {
+      upperMiddle = Math.floor(local / 2);
+      lowerMiddle = Math.floor(local / 2)
+    } else {
+      upperMiddle = Math.floor(local / 2) + 1;
+      lowerMiddle = Math.floor(local / 2)
+    }
 
     console.log(upperMiddle, lowerMiddle);
 

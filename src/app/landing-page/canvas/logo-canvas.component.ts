@@ -102,10 +102,44 @@ export class LogoCanvasComponent {
 
     // window.addEventListener("resize", this.onWindowResize, false);
 
-    const coord = { x: 10, y: 10, z: 0}
-    const test = this.lettersService.getLetter_M(coord, 5, 6);
+    const letterHeight = 5;
 
-    this.scene.add(test)
+    const coord_M = { x: -70, y: 50, z: 0};
+    const coord_A = { x: -45, y: 50, z: 0};
+    const coord_E = {x: -20, y: 50, z: 0};
+    const coord_F = {x: 5, y: 50, z: 0};
+    const coord_B = {x: 30, y: 50, z: 0};
+    const coord_C = {x: 55, y: 50, z: 0};
+    const coord_R = { x: -70, y: 20, z: 0};
+    const coord_L = {x: -45, y: 20, z: 0};
+    const coord_K = {x: -20, y: 20, z: 0};
+
+    const coord_dot = {x: -5, y: 20, z: 0};
+
+    const m = this.lettersService.getLetter_M(coord_M, letterHeight);
+    const a = this.lettersService.getLetter_A(coord_A, letterHeight);
+    const e = this.lettersService.getLetter_E(coord_E, letterHeight);
+    const f = this.lettersService.getLetter_F(coord_F, letterHeight);
+    const b = this.lettersService.getLetter_B(coord_B, letterHeight);
+    const c = this.lettersService.getLetter_C(coord_C, letterHeight);
+    const r = this.lettersService.getLetter_R(coord_R, letterHeight);
+    const l = this.lettersService.getLetter_L(coord_L, letterHeight);
+    const k = this.lettersService.getLetter_K(coord_K, letterHeight);
+
+    const dot = this.lettersService.getLetter_Dot(coord_dot, letterHeight)
+
+    this.scene.add(a);
+    this.scene.add(b);
+    this.scene.add(e);
+    this.scene.add(f);
+    this.scene.add(m);
+    this.scene.add(c);
+    this.scene.add(r);
+    this.scene.add(l);
+    this.scene.add(k);
+
+    this.scene.add(dot);
+
     this.animate();
   }
 
