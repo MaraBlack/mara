@@ -21,7 +21,7 @@ export class CubeService {
   */
   addCube(coordinates: PlaneCoordinates, color?: THREE.Color, wireframe?: boolean, segments?: number) {
     const localSegments = segments || this.segments;
-    const cubeGeom = new RoundedBoxGeometry(localSegments, localSegments, localSegments *1.5, 1, 0);
+    const cubeGeom = new RoundedBoxGeometry(localSegments, localSegments, localSegments * 1.5, 1, 0);
 
     // const sphereGeom = new THREE.SphereGeometry(localSegments / 2, 64, 32); 
 
@@ -49,7 +49,7 @@ export class CubeService {
       const localCoordinates = {
         x: startingPoint.x * localSegments,
         y: ((startingPoint.y || 0) * localSegments) + (index * localSegments),
-        z: 0
+        z: startingPoint.z
       }
       const cube = this.addCube(localCoordinates, new THREE.Color('#d3d5db'))
       group.add(cube);
@@ -60,16 +60,16 @@ export class CubeService {
     return group;
   }
 
-  addCubbesBottomAHorizontalRow(coordinates: PlaneCoordinates, noOfCubes: number, startingPoint: number, segments?: number) {
+  addCubbesHorizontalRow(coordinates: PlaneCoordinates, noOfCubes: number, startingPoint: PlaneCoordinates, segments?: number) {
     const localSegments = segments || this.segments;
     const group = new THREE.Group();
     group.name = 'verical_group'
 
     for (let index = 0; index < noOfCubes; index++) {
       const localCoordinates = {
-        x: localSegments + (index * localSegments),
-        y: (startingPoint * localSegments),
-        z: coordinates.z
+        x: (startingPoint.x * localSegments) + localSegments + (index * localSegments),
+        y: ((startingPoint.y || 0) * localSegments),
+        z: startingPoint.z
       }
       const cube = this.addCube(localCoordinates, new THREE.Color('#d3d5db'))
       group.add(cube);
@@ -80,7 +80,7 @@ export class CubeService {
     return group;
   }
 
-  addDiagonalLRTB(coordinates: PlaneCoordinates, startingPoint: PlaneCoordinates, noOfCubes: number, segments?: number) {
+  addDiagonalLRTB(coordinates: PlaneCoordinates, noOfCubes: number, startingPoint: PlaneCoordinates, segments?: number) {
     const localSegments = segments || this.segments;
     const localY = coordinates.y || 0;
     const group = new THREE.Group();
@@ -101,7 +101,7 @@ export class CubeService {
     return group;
   }
 
-  addDiagonalLRBT(coordinates: PlaneCoordinates, startingPoint: PlaneCoordinates, noOfCubes: number, segments?: number) {
+  addDiagonalLRBT(coordinates: PlaneCoordinates, noOfCubes: number, startingPoint: PlaneCoordinates, segments?: number) {
     const localSegments = segments || this.segments;
     const localY = coordinates.y || 0;
     const cubes = noOfCubes % 2 === 0 ? noOfCubes : (noOfCubes - 1)
