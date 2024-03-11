@@ -25,7 +25,7 @@ export class GenerateWordService {
     if (splitChar) {
       words.split(splitChar![0]).forEach((w, i) => {
         let positions: PlaneCoordinates[] = [];
-        const localPos = { x: i * 3.2 * noOfCubes, y: 0, z: 0 }
+        const localPos = { x: i * 3.4 * noOfCubes, y: 0, z: 0 }
 
         if (orientation === TextOrientation.VERTICAL) {
           positions = this.generatePositions(w, noOfCubes, localPos);
