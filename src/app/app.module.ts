@@ -7,6 +7,9 @@ import { ObjectInfoComponent } from './metropolis/shared/components/object-info/
 import { NavigationInfoComponent } from './metropolis/shared/components/navigation-info/navigation-info.component';
 import { LogoCanvasComponent } from './landing-page/canvas/logo-canvas.component';
 import { CommonModule } from '@angular/common';
+import { GenerateWordService } from './landing-page/shared/generate-word.service';
+import { LettersService } from './landing-page/shared/letters.service';
+import { CubeService } from './landing-page/shared/objects/cube.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,7 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CubeService, LettersService, GenerateWordService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

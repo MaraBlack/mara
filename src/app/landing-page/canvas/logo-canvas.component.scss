@@ -1,8 +1,66 @@
-.lading-page-container {
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
-  #logo-canvas-container {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
+.lading-page-container {
+  width: 100%;
+  height: 100vh;
+  font-family: "Open+Sans", sans-serif;
+
+  .header {
+    padding: 0.8%;
+    right: 1%;
+
+    .nav {
+      color: rgb(0, 255, 0);
+      cursor: pointer;
+
+      &:hover {
+        color: #ff00ff;
+      }
+    }
+  }
+
+  .main-container {
+    .links-section {
+      width: 4%;
+
+      .links {
+        bottom: 12%;
+        position: fixed;
+
+        .link-icon {
+          padding: 24% 0;
+
+          &:hover {
+            -webkit-filter: invert(1);
+            filter: invert(100%);
+          }
+        }
+      }
+    }
+
+    .object-container {
+      #logo-canvas-container {
+        height: 60vh;
+        width: 40vw;
+        display: grid;
+        background: rgb(255, 255, 255);
+      }
+    }
+
+    .text-container {
+      .about-me {
+        z-index: 2;
+        top: 48%;
+      }
+
+      .consola {
+        font-family: "Inconsolata", sans-serif;
+        border-radius: 4px;
+        background: rgb(230, 230, 230);
+        padding: 0 4px;
+        cursor: pointer;
+      }
+    }
   }
 }

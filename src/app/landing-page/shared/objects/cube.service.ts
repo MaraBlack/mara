@@ -21,7 +21,7 @@ export class CubeService {
   */
   addCube(coordinates: PlaneCoordinates, color?: THREE.Color, wireframe?: boolean, segments?: number) {
     const localSegments = segments || this.segments;
-    const cubeGeom = new RoundedBoxGeometry(localSegments, localSegments, localSegments + 1, 1, 0);
+    const cubeGeom = new RoundedBoxGeometry(localSegments, localSegments, localSegments *1.5, 1, 0);
 
     // const sphereGeom = new THREE.SphereGeometry(localSegments / 2, 64, 32); 
 
@@ -51,7 +51,7 @@ export class CubeService {
         y: ((startingPoint.y || 0) * localSegments) + (index * localSegments),
         z: 0
       }
-      const cube = this.addCube(localCoordinates)
+      const cube = this.addCube(localCoordinates, new THREE.Color('#d3d5db'))
       group.add(cube);
     }
 
@@ -59,26 +59,6 @@ export class CubeService {
 
     return group;
   }
-
-  // addCubbesRightVerticalRow(coordinates: PlaneCoordinates, noOfCubes: number, segments?: number) {
-  //   const localSegments = segments || this.segments;
-  //   const localY = coordinates.y || 0;
-  //   const group = new THREE.Group();
-  //   group.name = 'verical_group';
-
-  //   for (let index = 0; index < noOfCubes; index++) {
-  //     const localCoordinates = {
-  //       x: (noOfCubes * localSegments) - localSegments, y: index * localSegments, z: 0
-  //     }
-
-  //     const cube = this.addCube(localCoordinates)
-  //     group.add(cube);
-  //   }
-
-  //   group.position.set(coordinates.x, localY, coordinates.z);
-
-  //   return group;
-  // }
 
   addCubbesBottomAHorizontalRow(coordinates: PlaneCoordinates, noOfCubes: number, startingPoint: number, segments?: number) {
     const localSegments = segments || this.segments;
@@ -91,7 +71,7 @@ export class CubeService {
         y: (startingPoint * localSegments),
         z: coordinates.z
       }
-      const cube = this.addCube(localCoordinates)
+      const cube = this.addCube(localCoordinates, new THREE.Color('#d3d5db'))
       group.add(cube);
     }
 
@@ -112,7 +92,7 @@ export class CubeService {
         y: ((startingPoint.y || 0 * localSegments) * localSegments) - (index * localSegments),
         z: startingPoint.z
       }
-      const cube = this.addCube(localCoordinates)
+      const cube = this.addCube(localCoordinates, new THREE.Color('#d3d5db'))
       group.add(cube);
     }
 
@@ -136,7 +116,7 @@ export class CubeService {
         y: ((startingPoint.y || 0) * localSegments) - (index * localSegments),
         z: startingPoint.z
       }
-      const cube = this.addCube(localCoordinates)
+      const cube = this.addCube(localCoordinates, new THREE.Color('#d3d5db'))
       group.add(cube);
     }
 
@@ -153,28 +133,28 @@ export class CubeService {
     group.name = noOfCubes + 'R_group';
 
     const cubeLT = this.addCube({
-        x: startingPoint.x * localSegments,
-        y: (startingPoint.y || 0) * localSegments,
-        z: startingPoint.z
-    });
+      x: startingPoint.x * localSegments,
+      y: (startingPoint.y || 0) * localSegments,
+      z: startingPoint.z
+    }, new THREE.Color('#d3d5db'));
 
     const cubeRT = this.addCube({
-        x: (startingPoint.x * localSegments) + localSegments,
-        y: (startingPoint.y || 0) * localSegments,
-        z: startingPoint.z
-    });
+      x: (startingPoint.x * localSegments) + localSegments,
+      y: (startingPoint.y || 0) * localSegments,
+      z: startingPoint.z
+    }, new THREE.Color('#d3d5db'));
 
     const cubeLB = this.addCube({
-        x: (startingPoint.x * localSegments ),
-        y: (startingPoint.y || 0) * localSegments - localSegments,
-        z: startingPoint.z
-    });
+      x: (startingPoint.x * localSegments),
+      y: (startingPoint.y || 0) * localSegments - localSegments,
+      z: startingPoint.z
+    }, new THREE.Color('#d3d5db'));
 
     const cubeRB = this.addCube({
-        x: (startingPoint.x * localSegments ) + localSegments,
-        y: (startingPoint.y || 0) * localSegments - localSegments,
-        z: startingPoint.z
-    });
+      x: (startingPoint.x * localSegments) + localSegments,
+      y: (startingPoint.y || 0) * localSegments - localSegments,
+      z: startingPoint.z
+    }, new THREE.Color('#d3d5db'));
 
     group.add(cubeLT);
     group.add(cubeRT);

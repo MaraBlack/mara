@@ -1,7 +1,41 @@
-<div class="lading-page-container">
-    <div> text text </div>
-    <div id="logo-canvas-container">
+<div class="lading-page-container relative">
+  <div class="header w-full fixed flex-row-reverse flex text-3xl">
+    <div class="nav mt-2 mr-4">about</div>
+    <div class="nav mt-2 mr-4">projects</div>
+  </div>
+  <div class="main-container flex realtive h-full">
+    <div class="links-section flex justify-content-center p-2">
+      <div class="links">
+        <div class="link-icon" toolip="linkedin">
+          <a href="https://www.linkedin.com/in/mariabolea/" target="_blank">
+            <i class="pi pi-linkedin" style="font-size: 2.5rem; color: rgb(0, 255, 0)"></i>
+          </a>
+        </div>
+        <div class="link-icon" toolip="facebook">
+          <a href="https://www.facebook.com/mara.black.010" target="_blank">
+            <i class="pi pi-facebook" style="font-size: 2.5rem; color: rgb(0, 255, 0)"></i>
+          </a>
+        </div>
+        <div class="link-icon" toolip="instagram">
+          <a href="https://www.instagram.com/mara.black.010/" target="_blank">
+            <i class="pi pi-instagram" style="font-size: 2.5rem; color: rgb(0, 255, 0)"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="object-container flex relativejustify-content-center align-items-center">
+      <div id="logo-canvas-container">
         <canvas class="logo-canvas" #logoCanvas>
         </canvas>
+      </div>
     </div>
+    <div class="text-container w-9">
+      <div class="about-me justify-content-center relative align-items-center p-6 text-5xl text-center">
+        Hey there, I'm Maria, also known as <span class="consola">mara.black</span>,
+        a <span class="consola">web developer</span> who loves keeping things simple
+        and clean. Apart from coding, I enjoy <span class="consola">drawing</span> and
+        playing <span class="consola">video games</span>.
+      </div>
+    </div>
+  </div>
 </div>

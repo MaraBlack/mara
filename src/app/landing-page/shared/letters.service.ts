@@ -14,7 +14,34 @@ export class LettersService {
 
   }
 
-  getLetter_A(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private letterFunctions: { [key: string]: (coordinates: PlaneCoordinates, noOfCubes: number) => void } = {
+    'A': (coordinates, noOfCubes) => { return this.getLetter_A(coordinates, noOfCubes)},
+    'B': (coordinates, noOfCubes) => { return this.getLetter_B(coordinates, noOfCubes)},
+    'C': (coordinates, noOfCubes) => { return this.getLetter_C(coordinates, noOfCubes)},
+    'E': (coordinates, noOfCubes) => { return this.getLetter_E(coordinates, noOfCubes)},
+    'F': (coordinates, noOfCubes) => { return this.getLetter_F(coordinates, noOfCubes)},
+    'K': (coordinates, noOfCubes) => { return this.getLetter_K(coordinates, noOfCubes)},
+    'L': (coordinates, noOfCubes) => { return this.getLetter_L(coordinates, noOfCubes)},
+    'M': (coordinates, noOfCubes) => { return this.getLetter_M(coordinates, noOfCubes)},
+    'R': (coordinates, noOfCubes) => { return this.getLetter_R(coordinates, noOfCubes)},
+    '.': (coordinates, noOfCubes) => { return this.getLetter_Dot(coordinates, noOfCubes)},
+    // ... other letters
+  };
+
+  getLetter(char: string, coordinates: PlaneCoordinates, noOfCubes: number) {
+    const letterFunction = this.letterFunctions[char];
+    let obj: any;
+    if (letterFunction) {
+      obj =  letterFunction(coordinates, noOfCubes);
+    } else {
+      // Handle cases where there is no function for the letter
+      console.warn(`No function found for letter: ${char}`);
+    }
+
+    return obj;
+  }
+
+  private getLetter_A(coordinates: PlaneCoordinates, noOfCubes: number) {
     const group = new THREE.Group();
     group.name = noOfCubes + 'A_group';
     const upperMid = this.findMiddlePositions(noOfCubes).upperMid;
@@ -33,7 +60,7 @@ export class LettersService {
     return group;
   }
 
-  getLetter_B(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private getLetter_B(coordinates: PlaneCoordinates, noOfCubes: number) {
     const group = new THREE.Group();
     group.name = noOfCubes + 'B_group';
 
@@ -59,7 +86,7 @@ export class LettersService {
     return group;
   }
 
-  getLetter_C(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private getLetter_C(coordinates: PlaneCoordinates, noOfCubes: number) {
     const group = new THREE.Group();
     group.name = noOfCubes + 'C_group';
 
@@ -82,7 +109,7 @@ export class LettersService {
     return group;
   }
 
-  getLetter_E(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private getLetter_E(coordinates: PlaneCoordinates, noOfCubes: number) {
     const group = new THREE.Group();
     group.name = noOfCubes + 'E_group';
 
@@ -101,7 +128,7 @@ export class LettersService {
     return group;
   }
 
-  getLetter_F(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private getLetter_F(coordinates: PlaneCoordinates, noOfCubes: number) {
     const group = new THREE.Group();
     group.name = noOfCubes + 'F_group';
 
@@ -118,7 +145,7 @@ export class LettersService {
     return group;
   }
 
-  getLetter_K(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private getLetter_K(coordinates: PlaneCoordinates, noOfCubes: number) {
     const group = new THREE.Group();
     group.name = noOfCubes + 'K_group';
 
@@ -139,7 +166,7 @@ export class LettersService {
     return group;
   }
 
-  getLetter_L(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private getLetter_L(coordinates: PlaneCoordinates, noOfCubes: number) {
     const group = new THREE.Group();
     group.name = noOfCubes + 'L_group';
 
@@ -152,7 +179,10 @@ export class LettersService {
     return group;
   }
 
-  getLetter_M(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private getLetter_M(coordinates: PlaneCoordinates, noOfCubes: number) {
+
+    console.log('Calling getLetter_M');
+
     const group = new THREE.Group();
     group.name = noOfCubes + 'M_group';
 
@@ -163,7 +193,7 @@ export class LettersService {
     const lowerMid = this.findMiddlePositions(noOfCubes).lowerMid;
 
     const diagonalLeftRight = this.cubeService.addDiagonalLRTB(coordinates, { x: 0, y: noOfCubes - 1, z: 0 }, upperMid);
-    const diagonalRightLeft = this.cubeService.addDiagonalLRBT(coordinates, { x: noOfCubes -2, y: noOfCubes - 1, z: 0 }, upperMid);
+    const diagonalRightLeft = this.cubeService.addDiagonalLRBT(coordinates, { x: noOfCubes - 2, y: noOfCubes - 1, z: 0 }, upperMid);
 
     group.add(cubesInARowLeft);
     group.add(diagonalLeftRight);
@@ -173,7 +203,7 @@ export class LettersService {
     return group;
   }
 
-  getLetter_R(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private getLetter_R(coordinates: PlaneCoordinates, noOfCubes: number) {
     const group = new THREE.Group();
     group.name = noOfCubes + 'R_group';
 
@@ -186,7 +216,7 @@ export class LettersService {
 
     const noOfCubesForRight = Math.floor((noOfCubes - 2) / 2);
     const upperR = this.cubeService.addCubbesVerticalRow(coordinates, noOfCubesForRight, { x: noOfCubes - 1, y: noOfCubes - noOfCubesForRight - 1, z: 0 });
-    const lowerR = this.cubeService.addCubbesVerticalRow(coordinates, lowerMid, { x: upperMid + 1, y: 0, z: 0 });
+    const lowerR = this.cubeService.addCubbesVerticalRow(coordinates, lowerMid, { x: upperMid, y: 0, z: 0 });
 
     group.add(cubesInARowLeft);
     group.add(topLine);
@@ -197,9 +227,9 @@ export class LettersService {
     return group;
   }
 
-  getLetter_Dot(coordinates: PlaneCoordinates, noOfCubes: number) {
+  private getLetter_Dot(coordinates: PlaneCoordinates, noOfCubes: number) {
     const half = noOfCubes / 2;
-    const coords = {x: half, y: half, z:0}
+    const coords = { x: half, y: half, z: 0 }
     return this.cubeService.addDot(coordinates, coords, noOfCubes);
   }
 
