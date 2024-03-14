@@ -27,7 +27,7 @@ export class LogoCanvasComponent implements OnChanges, AfterViewInit {
   img = this.absoluteAssetsPath + 'dang.png'
 
   selectedWords = '';
-  letterHeight = 7
+  letterHeight = 7;
 
   // renderer
   renderer!: THREE.Renderer;
@@ -97,14 +97,15 @@ export class LogoCanvasComponent implements OnChanges, AfterViewInit {
     (this.renderer as THREE.WebGLRenderer).shadowMap.enabled = true;
 
     this.controls = this.controlsService.getControls(this.camera, this.renderer.domElement);
-    // this.controls.minDistance = 10;
-    // this.controls.maxDistance = 124;
+    // this.controls.autoRotate = true;
+    this.controls.minDistance = 240;
+    this.controls.maxDistance = 300;
 
     // const tanFOV = Math.tan(((Math.PI / 180) * this.camera.fov / 1.6));
 
     const coord_ = Math.floor((this.letterHeight * this.letterHeight) / 2);
 
-    this.wordObjects = this.generateWordService.generateWord('abcde-fgikl-mnops-rvw', this.letterHeight, TextOrientation.VERTICAL);
+    this.wordObjects = this.generateWordService.generateWord('hello-there', this.letterHeight, TextOrientation.VERTICAL);
     this.wordObjects.name = 'words-group';
     this.wordObjects.position.x = -coord_;
 

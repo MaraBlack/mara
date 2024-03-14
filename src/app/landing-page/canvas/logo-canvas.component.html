@@ -23,10 +23,19 @@
         </div>
       </div>
     </div>
-    <div class="object-container flex relativejustify-content-center align-items-center">
-      <div id="logo-canvas-container">
-        <canvas class="logo-canvas" #logoCanvas>
-        </canvas>
+    <div class="object-container relative flex justify-content-center align-items-center">
+      <ng-container>
+        <div id="logo-canvas-container">
+          <canvas class="logo-canvas" #logoCanvas></canvas>
+        </div>
+      </ng-container>
+
+      <div class="actions">
+        <div class="surface-50 w-6 p-3 link-icon" toolip="code">
+          <a href="https://stackblitz.com/edit/angular-threejs-letters-demo?file=src%2Fmain.ts" target="_blank">
+            <i class="pi pi-code" style="font-size: 2.5rem;"></i>
+          </a>
+        </div>
       </div>
     </div>
     <div class="text-container w-9">
@@ -34,7 +43,7 @@
         Hello there, I'm Maria, also known as <span class="consola" (click)="setWords('mara.-black')">mara.black</span>,
         a <span class="consola" (click)="setWords('web-dev')">web developer</span> who loves keeping things
         simple and clean. Apart from coding, I enjoy <span class="consola" (click)="setWords('drawing')">drawing</span>
-         and playing <span class="consola" (click)="setWords('video-games')">video games</span>.
+        and playing <span class="consola" (click)="setWords('video-games')">video games</span>.
       </div>
     </div>
   </div>

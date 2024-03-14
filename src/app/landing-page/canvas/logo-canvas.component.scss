@@ -3,6 +3,17 @@
 
 $main-color: rgb(0, 255, 0);
 
+a, i,
+.link-icon {
+  color: $main-color;
+  cursor: pointer;
+
+  &:hover {
+    -webkit-filter: invert(1);
+    filter: invert(100%);
+  }
+}
+
 .lading-page-container {
   width: 100%;
   height: 100vh;
@@ -14,7 +25,6 @@ $main-color: rgb(0, 255, 0);
 
     .nav {
       color: $main-color;
-      cursor: pointer;
 
       &:hover {
         -webkit-filter: invert(1);
@@ -33,25 +43,35 @@ $main-color: rgb(0, 255, 0);
 
         .link-icon {
           padding: 24% 0;
-          
-          a {
-            color: $main-color
-          }
-
-          &:hover {
-            -webkit-filter: invert(1);
-            filter: invert(100%);
-          }
         }
       }
     }
 
+
     .object-container {
+
+      .actions {
+        position: absolute;
+        display: none;
+        justify-content: flex-end;
+        right: 2%;
+        top: 20%;
+        color: $main-color;
+        border-radius: 12px;
+        background-color: rgb(249, 249, 249);
+      }
+
       #logo-canvas-container {
         height: 60vh;
         width: 40vw;
         display: grid;
         background: rgb(255, 255, 255);
+      }
+
+      &:hover {
+        .actions {
+          display: grid;
+        }
       }
     }
 
